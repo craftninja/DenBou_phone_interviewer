@@ -1,1 +1,7 @@
 <h1>Welcome to PhoneInterviewer</h1>
+
+<% if session[:user_id] %>
+  <p>Welcome, <%= User.find(session[:user_id]).first_name %>!</p>
+<% else %>
+  <%= link_to "Login with LinkedIn", "/auth/linkedin" %>
+<% end %>
