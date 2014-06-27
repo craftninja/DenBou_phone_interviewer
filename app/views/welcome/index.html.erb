@@ -2,6 +2,7 @@
 
 <% if session[:user_id] %>
   <p>Welcome, <%= User.find(session[:user_id]).first_name %>!</p>
+  <p>Your Super-Secret PIN # is: <%= User.find(session[:user_id]).pin %>!</p>
 <% else %>
   <%= link_to "Login with LinkedIn", "/auth/linkedin" %>
 <% end %>
