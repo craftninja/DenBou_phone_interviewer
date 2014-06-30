@@ -7,7 +7,9 @@ describe 'get /main-menu.xml' do
 
     expected_response = <<-INPUT
 <Response>
-  <Say>Welcome to Phone Interviewer. Please press 1 for a general question.</Say>
+  <Gather action="/main-menu">
+    <Say>Welcome to Phone Interviewer. Please press 1 for a general question.</Say>
+  </Gather>
 </Response>
     INPUT
 
