@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   get '/auth/linkedin/callback', to: 'linkedin_registration#create'
-  get '/main-menu', to: 'menu#index'
-  post '/main-menu', to: 'menu#create'
+  namespace :twilio do
+    get '/main-menu', to: 'base#index'
+    post '/main-menu', to: 'base#create'
+  end
 end

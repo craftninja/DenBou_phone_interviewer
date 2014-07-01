@@ -181,6 +181,7 @@ DEPENDENCIES
   dotenv-rails (~> 0.11.1)
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri (~> 1.6.2.1)
   omniauth-linkedin-oauth2 (~> 0.1.5)
   pg
   rails (= 4.1.1)
