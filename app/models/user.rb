@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  validates :phone_number, format: {with: /\A\d{10}\z/}, on: :update
+
   def self.create_or_update_with_omniauth(auth)
     user = where(provider: auth["provider"], uid: auth["uid"]).first_or_initialize
     user.provider = auth["provider"]

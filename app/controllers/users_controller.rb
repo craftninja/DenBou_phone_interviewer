@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  include ActionView::Helpers::NumberHelper
+
   def show
 
   end
@@ -10,9 +12,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(strong_params)
-    flash[:phone_number_added] = "Thank you for adding your phone number. The phone number you added was: #{@user.phone_number}."
-    redirect_to user_path(@user)
+    if @user.update(strong_params)
+      formatted_phone_number = number_to_phone(@user.phone_number, area_code: true)
+      flash[:phone_number_added] = "Thank you for adding your phone number. The phone number you added was: #{formatted_phone_number}."
+      redirect_to user_path(@user)
+    else
+      render "edit"
+    end
   end
 
   private

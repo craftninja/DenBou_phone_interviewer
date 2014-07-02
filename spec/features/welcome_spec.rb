@@ -22,7 +22,7 @@ feature 'welcome page' do
     expect(page).to_not have_content 'Please call (646) 679-2429 to start answering interview questions!'
     fill_in 'user[phone_number]', with: '2347899874'
     click_button 'Add Phone Number'
-    expect(page).to have_content 'Thank you for adding your phone number. The phone number you added was: 2347899874.'
+    expect(page).to have_content 'Thank you for adding your phone number. The phone number you added was: (234) 789-9874.'
     expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
   end
 
