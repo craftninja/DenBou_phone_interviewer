@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include ActionView::Helpers::NumberHelper
 
   def show
-
+    @recordings = current_user.recordings.includes(:question)
   end
 
   def edit

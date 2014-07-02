@@ -1,14 +1,16 @@
-class Twilio::BaseController < ApplicationController
+module Twilio
+  class BaseController < ApplicationController
 
-  skip_before_filter :verify_authenticity_token
+    skip_before_filter :verify_authenticity_token
 
-  def main_menu
+    def main_menu
+
+    end
+
+    def create
+      xml = Twilio::MainMenu.new.return_xml
+      render xml: xml
+    end
 
   end
-
-  def create
-    xml = Twilio::MainMenu.new.return_xml
-    render xml: xml
-  end
-
 end

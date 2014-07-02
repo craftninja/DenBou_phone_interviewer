@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :recordings
+
   validates :phone_number, format: {with: /\A\d{10}\z/}, on: :update
 
   def self.create_or_update_with_omniauth(auth)
