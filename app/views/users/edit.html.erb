@@ -1,0 +1,6 @@
+<p>Welcome, <%= current_user.first_name %>!</p>
+<%= form_for @user do |f| %>
+  <%= f.label :phone_number %>
+  <%= f.telephone_field :phone_number %>
+  <%= f.submit "Add Phone Number" %>
+<% end %>

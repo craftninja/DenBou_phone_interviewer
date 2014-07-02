@@ -1,9 +1,3 @@
 <h1>Welcome to PhoneInterviewer</h1>
 
-<% if session[:user_id] %>
-  <p>Welcome, <%= current_user.first_name %>!</p>
-  <p>Your Super-Secret PIN # is: <%= current_user.pin %>!</p>
-  <p>Please call (646) 679-2429 to start answering interview questions!</p>
-<% else %>
-  <%= link_to "Login with LinkedIn", "/auth/linkedin" %>
-<% end %>
+<%= link_to "Login with LinkedIn", "/auth/linkedin" %>
