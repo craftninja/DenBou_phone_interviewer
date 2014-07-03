@@ -30,6 +30,17 @@ html, body {
     height: 100%;
     width: 100%; }
 
+nav {
+    width: 100%;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 2em;
+    background-color: rgba(242, 232, 223, 0.75);
+    border: none;
+    text-align: left;
+    overflow: hidden;
+}
+
 #wrapper {
     position: fixed;
     bottom: 50px;
@@ -58,6 +69,10 @@ html, body {
     color: #e66d09;
 }
 
+#orange {
+    color: #e66d09;
+}
+
 #welcomebox a {
     color: #e66d09;
 }
@@ -82,4 +97,27 @@ html, body {
 
 #errors {
     color: red;
+}
+
+#recordings {
+    margin-left: 10em;
+}
+
+.logo {
+    width: 6em;
+    margin-left: 1em;
+    text-align: left;
+}
+
+.right {
+    float: right;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.center {
+    text-align: center;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 2em;
 }

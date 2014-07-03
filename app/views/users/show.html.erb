@@ -1,10 +1,18 @@
-<%= flash[:phone_number_added] %>
-<p>Please call (646) 679-2429 to start answering interview questions!</p>
+<h8 class="center"><%= flash[:phone_number_added] %></h8>
 
-<h1>Recordings</h1>
-<% @recordings.each do |recording| %>
+<nav>
+  <span class="left">
+  <%= image_tag("PhoneInterviewMe.png", class: "logo") %>
+  </span>
+  <span class="right"><h7>Please call (646) 679-2429 to start answering interview questions!</h7></span>
+</nav>
+
+<span id="recordings">
+<h1 id="recordings">Recordings</h1>
+  <% @recordings.each do |recording| %>
 <ul>
   <li><%= recording.question.question %></li>
   <li><%= recording.recording %></li>
 </ul>
 <% end %>
+</span>
