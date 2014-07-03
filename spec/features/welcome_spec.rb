@@ -4,7 +4,7 @@ feature 'welcome page' do
 
   scenario 'user can view the homepage with a welcome message' do
     visit '/'
-    expect(page).to have_content 'Welcome to PhoneInterviewer'
+    expect(page).to have_content 'Welcome to PhoneInterviewMe'
   end
 
   scenario 'user can login with LinkedIn' do

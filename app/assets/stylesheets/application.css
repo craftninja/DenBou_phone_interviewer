@@ -13,3 +13,70 @@
  *= require_tree .
  *= require_self
  */
+@import url(http://fonts.googleapis.com/css?family=Great+Vibes);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
+html {
+    background: url("http://openclipart.org/image/2400px/svg_to_png/183631/communication.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(242, 232, 223, 0.75); }
+
+/*img {*/
+    /*opacity: 0.4;*/
+    /*filter: alpha(opacity=40); *//* For IE8 and earlier */
+/*}*/
+
+html, body {
+    height: 100%;
+    width: 100%; }
+
+#wrapper {
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+}
+
+#welcomebox {
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 2em;
+    width: 100%;
+    background-color: rgba(242, 232, 223, 0.75);
+    padding: 10px;
+    border: none;
+    text-align: center;
+}
+
+@media screen and (max-width: 568px) {
+    #welcomebox {
+        font-size: 1.5em;
+    }
+}
+
+#welcomebox p {
+    margin: 15px 0;
+    color: #e66d09;
+}
+
+#welcomebox a {
+    color: #e66d09;
+}
+
+#welcomebox a:hover {
+    color: #E84F04;
+}
+
+#innerwrapper {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#linked_in {
+    font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+    font-size: .75em;
+}
+
+#bold_link {
+    font-weight:700;
+
+}
