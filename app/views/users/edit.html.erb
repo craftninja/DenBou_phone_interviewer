@@ -1,12 +1,16 @@
-<% if @user.errors.present? %>
-  <% @user.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %>
-<% end %>
+<div id="wrapper">
+  <div id="welcomebox">
+    <% if @user.errors.present? %>
+      <% @user.errors.full_messages.each do |message| %>
+        <p><span id="errors"><%= message %></span></p>
+      <% end %>
+    <% end %>
 
-<p>Welcome, <%= current_user.first_name %>!</p>
-<%= form_for @user do |f| %>
-  <%= f.label :phone_number %>
-  <%= f.telephone_field :phone_number %>
-  <%= f.submit "Add Phone Number" %>
-<% end %>
+    <h1>Welcome, <%= current_user.first_name %>!</h1>
+    <%= form_for @user do |f| %>
+      <%= f.label :phone_number %>
+      <%= f.telephone_field :phone_number %>
+      <%= f.submit "Add Phone Number" %>
+    <% end %>
+  </div>
+</div>
