@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   include ActionView::Helpers::NumberHelper
 
   def show
-    @recordings = current_user.recordings.includes(:question)
+    if current_user.phone_number
+      @recordings = current_user.recordings.includes(:question)
+    else
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def edit

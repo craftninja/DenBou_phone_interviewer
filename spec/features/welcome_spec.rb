@@ -46,4 +46,14 @@ feature 'welcome page' do
     expect(page).to_not have_content 'Recordings'
   end
 
+  scenario 'a user should not be able to visit their show page if they do not have a phone number' do
+    mock_auth_hash
+    visit '/'
+    click_link 'Login with LinkedIn'
+    user = User.first
+    visit "/users/#{user.id}"
+    expect(page).to_not have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    expect(page).to have_button 'Add Phone Number'
+  end
+
 end
