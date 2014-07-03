@@ -2,8 +2,14 @@ class UsersController < ApplicationController
 
   include ActionView::Helpers::NumberHelper
 
+  before_action :user_cookie_expired?
+
   def show
-    @recordings = current_user.recordings.includes(:question)
+    if current_user.phone_number
+      @recordings = current_user.recordings.includes(:question)
+    else
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def edit
@@ -25,6 +31,12 @@ class UsersController < ApplicationController
 
   def strong_params
     params.require(:user).permit(:phone_number)
+  end
+
+  def user_cookie_expired?
+    unless current_user
+      redirect_to root_path
+    end
   end
 
 end
