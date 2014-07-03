@@ -26,14 +26,21 @@ feature 'welcome page' do
     expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
   end
 
-  scenario 'a user is redirected to their show page if the session is still valid' do
+  scenario 'user is assigned a cookie that expires in 60 days after adding their phone number' do
     mock_auth_hash
     visit '/'
     click_link 'Login with LinkedIn'
+    expect(page).to_not have_content 'Your Super-Secret PIN'
+    expect(page).to_not have_content 'Please call (646) 679-2429 to start answering interview questions!'
     fill_in 'user[phone_number]', with: '2347899874'
     click_button 'Add Phone Number'
     visit '/'
     expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    travel_to(60.days.from_now) do
+      user = User.first
+      visit "/users/#{user.id}"
+      expect(page).to have_content 'Login with LinkedIn'
+    end
   end
 
   scenario 'a user should not see Recordings if they do not have any' do
