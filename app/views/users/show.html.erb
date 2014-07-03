@@ -1,10 +1,12 @@
 <%= flash[:phone_number_added] %>
 <p>Please call (646) 679-2429 to start answering interview questions!</p>
 
-<h1>Recordings</h1>
-<% @recordings.each do |recording| %>
-<ul>
-  <li><%= recording.question.question %></li>
-  <li><%= recording.recording %></li>
-</ul>
+<% if !@recordings.empty? %>
+  <h1>Recordings</h1>
+  <% @recordings.each do |recording| %>
+    <ul>
+      <li><%= recording.question.question %></li>
+      <li><%= recording.recording %></li>
+    </ul>
+  <% end %>
 <% end %>

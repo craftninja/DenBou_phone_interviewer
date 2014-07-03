@@ -36,4 +36,14 @@ feature 'welcome page' do
     expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
   end
 
+  scenario 'a user should not see Recordings if they do not have any' do
+    mock_auth_hash
+    visit '/'
+    click_link 'Login with LinkedIn'
+    fill_in 'user[phone_number]', with: '2347899874'
+    click_button 'Add Phone Number'
+    expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    expect(page).to_not have_content 'Recordings'
+  end
+
 end
