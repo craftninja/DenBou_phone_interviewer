@@ -99,8 +99,18 @@ nav {
     color: red;
 }
 
-#recordings {
+#recordings span {
     margin-left: 10em;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 2em;
+}
+
+#recordings li {
+    margin-left: 8em;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 1em;
 }
 
 .logo {
