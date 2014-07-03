@@ -78,5 +78,8 @@ html, body {
 
 #bold_link {
     font-weight:700;
+}
 
+#errors {
+    color: red;
 }
