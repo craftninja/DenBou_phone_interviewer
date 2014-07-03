@@ -26,4 +26,14 @@ feature 'welcome page' do
     expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
   end
 
+  scenario 'a user is redirected to their show page if the session is still valid' do
+    mock_auth_hash
+    visit '/'
+    click_link 'Login with LinkedIn'
+    fill_in 'user[phone_number]', with: '2347899874'
+    click_button 'Add Phone Number'
+    visit '/'
+    expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
+  end
+
 end
