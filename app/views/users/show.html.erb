@@ -1,19 +1,27 @@
-<nav>
-  <span class="center"><p><%= flash[:phone_number_added] %></p></span>
+<div class="fade">
+  <nav>
   <span class="left">
   <%= image_tag("PhoneInterviewMe.png", class: "logo") %>
   </span>
-  <span class="right"><h7>Please call (646) 679-2429 to start answering interview questions!</h7></span>
-</nav>
+  <span class="right"><h6>Please call <span class="orange">(646) 679-2429</span> to start answering interview questions!
+  </h6>
+  </span>
+  </nav>
 
-<% if !@recordings.empty? %>
-<span id="recordings">
-<h1>Recordings</h1>
+  <% if flash %>
+  <span class="center"><p><%= flash[:phone_number_added] %></p></span>
+  <% end %>
+
+
+  <% if !@recordings.empty? %>
+    <span class="center"><h1>Recordings</h1></span>
+
   <% @recordings.each do |recording| %>
-<ul>
+<ul><div class="one_sixth">
   <li><%= recording.question.question %></li>
   <li><%= recording.recording %></li>
-</ul>
+</div></ul>
 <% end %>
-</span>
-<% end %>
+  <% end %>
+
+</div>
