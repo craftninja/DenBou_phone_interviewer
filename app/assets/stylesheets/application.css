@@ -76,11 +76,11 @@ nav {
     color: #e66d09;
 }
 
-#welcomebox a {
+a {
     color: #e66d09;
 }
 
-#welcomebox a:hover {
+a:hover {
     color: #E84F04;
 }
 
