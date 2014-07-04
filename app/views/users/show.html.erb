@@ -17,9 +17,8 @@
     <span class="center"><h1>Recordings</h1></span>
 
   <% @recordings.each do |recording| %>
-<ul><div class="one_sixth">
-  <li><%= recording.question.question %></li>
-  <li><%= recording.recording %></li>
+<ul><div class="one_third">
+  <li><a href="<%= recording.recording %>"><%= recording.question.question %></a></li>
 </div></ul>
 <% end %>
   <% end %>
