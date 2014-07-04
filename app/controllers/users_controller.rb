@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   include ActionView::Helpers::NumberHelper
 
   before_action :user_cookie_expired?
+  before_action :validate_user, only: :show
+
 
   def show
     if current_user.phone_number
@@ -39,4 +41,7 @@ class UsersController < ApplicationController
     end
   end
 
+  def validate_user
+    render :status => :forbidden, :text => "Forbidden Fruit, my friend. Please visit your own profile page." unless current_user and current_user.id.to_s == params[:id]
+  end
 end
