@@ -7,4 +7,8 @@ class LinkedinRegistrationController < ApplicationController
     redirect_to edit_user_path(user)
   end
 
+  def failure
+    redirect_to root_path, flash: {:auth_failure => "Authorization with LinkedIn has failed, please retry."}
+  end
+
 end

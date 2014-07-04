@@ -120,7 +120,7 @@ a:hover {
 .right {
     float: right;
     margin-right: 1em;
-    margin-top: 0em;
+    margin-top: 0;
 }
 
 .center {

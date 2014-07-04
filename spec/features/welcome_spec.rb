@@ -14,6 +14,15 @@ feature 'welcome page' do
     expect(page).to have_content 'Welcome, Nathanael!'
   end
 
+  scenario 'user is notified upon a failed login with linkedin' do
+    silence_omniauth do
+      OmniAuth.config.mock_auth[:linkedin] = :invalid
+      visit '/'
+      click_link 'Login with LinkedIn'
+      expect(page).to have_content 'Authorization with LinkedIn has failed, please retry.'
+    end
+  end
+
   scenario 'user enters their phone number upon successful login' do
     mock_auth_hash
     visit '/'

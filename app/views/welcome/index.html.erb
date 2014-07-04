@@ -1,7 +1,8 @@
 <div id="wrapper">
-    <div id="welcomebox">
-      <h1>Welcome to PhoneInterviewMe</h1>
+  <div id="welcomebox">
+    <h1>Welcome to PhoneInterviewMe</h1>
 
-      <a href="/auth/linkedin"><span id="bold_link">Login with </span><span id="linked_in">LinkedIn</span></a>
-    </div>
+    <p class="center" id="errors"><%= flash[:auth_failure] %></p>
+    <a href="/auth/linkedin"><span id="bold_link">Login with </span><span id="linked_in">LinkedIn</span></a>
+  </div>
 </div>
