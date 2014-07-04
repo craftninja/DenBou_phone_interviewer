@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(strong_params)
+    if @user.update(:phone_number => cleaned_params)
       formatted_phone_number = number_to_phone(@user.phone_number, area_code: true)
       flash[:phone_number_added] = "Thank you for adding your phone number. The phone number you added was: #{formatted_phone_number}."
       redirect_to user_path(@user)
@@ -32,8 +32,12 @@ class UsersController < ApplicationController
   private
 
   def strong_params
-    params.require(:user).permit(:phone_number)
+    params.require(:user).permit(phone_number: [:phone_number1, :phone_number2])
   end
+
+  def cleaned_params
+    strong_params["phone_number"]["phone_number1"]+ strong_params["phone_number"]["phone_number2"].gsub("-","").delete(" ")
+end
 
   def user_cookie_expired?
     unless current_user

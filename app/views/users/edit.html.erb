@@ -15,7 +15,10 @@
     <h1 class="orange">Welcome, <%= current_user.first_name %>!</h1>
     <%= form_for @user do |f| %>
       <%= f.label :phone_number %>
-      <%= f.telephone_field :phone_number %>
+        <%= f.fields_for :phone_number do |builder| %>
+            <%= builder.phone_field :phone_number1,size: 4, :maxlength => 3 %>-
+            <%= builder.phone_field :phone_number2, size: 9, :maxlength => 7 %>
+            <%end %>
       <%= f.submit "Add" %>
     <% end %>
   </div>
