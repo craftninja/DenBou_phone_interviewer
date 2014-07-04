@@ -9,18 +9,20 @@
   </nav>
 
   <% if flash %>
-  <span class="center"><p><%= flash[:phone_number_added] %></p></span>
+    <span class="center"><p><%= flash[:phone_number_added] %></p></span>
   <% end %>
 
 
   <% if !@recordings.empty? %>
     <span class="center"><h1>Recordings</h1></span>
 
-  <% @recordings.each do |recording| %>
-<ul><div class="one_third">
-  <li><a href="<%= recording.recording %>"><%= recording.question.question %></a></li>
-</div></ul>
-<% end %>
+    <% @recordings.each do |recording| %>
+      <ul>
+        <div class="one_third">
+          <li><a href="<%= recording.recording %>"><%= recording.question.question %></a></li>
+        </div>
+      </ul>
+    <% end %>
   <% end %>
 
 </div>

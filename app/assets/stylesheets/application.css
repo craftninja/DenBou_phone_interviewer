@@ -15,20 +15,18 @@
  */
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
+
 html {
     background: url("http://openclipart.org/image/2400px/svg_to_png/183631/communication.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: rgba(242, 232, 223, 0.75); }
-
-/*img {*/
-    /*opacity: 0.4;*/
-    /*filter: alpha(opacity=40); *//* For IE8 and earlier */
-/*}*/
+    background-color: rgba(242, 232, 223, 0.75);
+}
 
 html, body {
     height: 100%;
-    width: 100%; }
+    width: 100%;
+}
 
 nav {
     background-color: rgba(242, 232, 223, 0.75);
@@ -92,7 +90,7 @@ nav {
 }
 
 #bold_link {
-    font-weight:700;
+    font-weight: 700;
 }
 
 #errors {
