@@ -15,20 +15,34 @@
  */
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
+
 html {
     background: url("http://openclipart.org/image/2400px/svg_to_png/183631/communication.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: rgba(242, 232, 223, 0.75); }
-
-/*img {*/
-    /*opacity: 0.4;*/
-    /*filter: alpha(opacity=40); *//* For IE8 and earlier */
-/*}*/
+    background-color: rgba(242, 232, 223, 0.75);
+}
 
 html, body {
     height: 100%;
-    width: 100%; }
+    width: 100%;
+}
+
+nav {
+    background-color: rgba(242, 232, 223, 0.75);
+}
+
+.fade {
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 2em;
+    background-color: rgba(242, 232, 223, 0.90);
+    border: none;
+    text-align: left;
+    overflow: hidden;
+}
 
 #wrapper {
     position: fixed;
@@ -58,17 +72,16 @@ html, body {
     color: #e66d09;
 }
 
-#welcomebox a {
+.orange {
     color: #e66d09;
 }
 
-#welcomebox a:hover {
-    color: #E84F04;
+a {
+    color: #e66d09;
 }
 
-#innerwrapper {
-    margin: 0 auto;
-    width: 100%;
+a:hover {
+    color: #E84F04;
 }
 
 #linked_in {
@@ -77,9 +90,67 @@ html, body {
 }
 
 #bold_link {
-    font-weight:700;
+    font-weight: 700;
 }
 
 #errors {
     color: red;
 }
+
+.recordings h1 {
+    text-align: center;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 2em;
+}
+
+.recordings li {
+    margin-left: 8em;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+.logo {
+    width: 6em;
+    margin-left: 1em;
+    text-align: left;
+}
+
+.right {
+    float: right;
+    margin-right: 1em;
+    margin-top: 0em;
+}
+
+.center {
+    text-align: center;
+    font-size: 1em;
+}
+
+.one_third {
+    margin-left: 33%;
+    font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+    font-size: .65em;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h6 {
+    font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+}
+
+input[type=tel] {
+    font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+    font-size: .3em;
+}
+
+input[type=submit] {
+    font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+    font-size: .3em;
+    background-color: #e66d09;
+}
+

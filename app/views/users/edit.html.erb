@@ -1,3 +1,9 @@
+<div class="fade"><nav>
+  <span class="left">
+  <%= image_tag("PhoneInterviewMe.png", class: "logo") %>
+  </span>
+</nav>
+
 <div id="wrapper">
   <div id="welcomebox">
     <% if @user.errors.present? %>
@@ -6,11 +12,12 @@
       <% end %>
     <% end %>
 
-    <h1>Welcome, <%= current_user.first_name %>!</h1>
+    <h1 class="orange">Welcome, <%= current_user.first_name %>!</h1>
     <%= form_for @user do |f| %>
       <%= f.label :phone_number %>
       <%= f.telephone_field :phone_number %>
-      <%= f.submit "Add Phone Number" %>
+      <%= f.submit "Add" %>
     <% end %>
   </div>
+</div>
 </div>
