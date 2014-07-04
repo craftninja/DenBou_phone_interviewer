@@ -1,6 +1,8 @@
 module Twilio
   class RecordingsController < ApplicationController
 
+    skip_before_filter :verify_authenticity_token
+
     def create
       recording_url = params[:RecordingUrl]
       phone_number = params[:Caller].slice(2..-1)
