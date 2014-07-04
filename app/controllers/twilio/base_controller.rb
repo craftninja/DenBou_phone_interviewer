@@ -8,7 +8,9 @@ module Twilio
     end
 
     def create
-      xml = Twilio::MainMenu.new.return_xml
+      phone_number = params[:Caller].slice(2..-1)
+      user = User.find_by(phone_number: phone_number)
+      xml = Twilio::MainMenu.new.return_xml(user)
       render xml: xml
     end
 

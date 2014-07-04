@@ -1,7 +1,8 @@
 class Twilio::MainMenu
 
-  def return_xml
-    question = Question.first
+  def return_xml(user)
+    question = Question.limit(1).order("RANDOM()").first
+    UserQuestion.create!(:user_id => user.id, :question_id => question.id)
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.Response {
         xml.Say "Press any key when you have completed responding to the following question."

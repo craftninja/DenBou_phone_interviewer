@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702224234) do
+ActiveRecord::Schema.define(version: 20140704161313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20140702224234) do
   add_index "recordings", ["question_id"], name: "index_recordings_on_question_id", using: :btree
   add_index "recordings", ["user_id"], name: "index_recordings_on_user_id", using: :btree
 
+  create_table "user_questions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_questions", ["question_id"], name: "index_user_questions_on_question_id", using: :btree
+  add_index "user_questions", ["user_id"], name: "index_user_questions_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string "provider"
     t.string "uid"
@@ -39,5 +49,13 @@ ActiveRecord::Schema.define(version: 20140702224234) do
     t.string "last_name"
     t.string "phone_number"
   end
+
+  create_table "users_questions", force: true do |t|
+    t.integer "user_id"
+    t.integer "question_id"
+  end
+
+  add_index "users_questions", ["question_id"], name: "index_users_questions_on_question_id", using: :btree
+  add_index "users_questions", ["user_id"], name: "index_users_questions_on_user_id", using: :btree
 
 end
