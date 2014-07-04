@@ -8,9 +8,10 @@ feature 'user show page' do
     click_link 'Login with LinkedIn'
     user = User.first
     user.update(phone_number: '9499499499')
-    Recording.create(recording: 'http://www.recording.com', user_id: user.id, question_id: Question.first.id)
+    question = Question.all[8]
+    Recording.create!(recording: 'http://www.recording.com', user_id: user.id, question_id: question.id)
     visit "/users/#{user.id}"
-    expect(page).to have_link("What is your biggest strength")
+    expect(page).to have_link("#{question.question}")
   end
 
   scenario "logged in user cannot visit another user's profile page" do

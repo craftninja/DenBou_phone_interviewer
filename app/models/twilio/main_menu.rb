@@ -1,7 +1,12 @@
 class Twilio::MainMenu
 
   def return_xml(user)
+    asked_questions = UserQuestion.where(user_id: user.id)
+    ids = asked_questions.map { |user_question| user_question.question_id }
     question = Question.limit(1).order("RANDOM()").first
+    while ids.include?(question.id)
+      question = Question.limit(1).order("RANDOM()").first
+    end
     UserQuestion.create!(:user_id => user.id, :question_id => question.id)
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.Response {

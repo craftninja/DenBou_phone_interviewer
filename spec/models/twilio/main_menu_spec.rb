@@ -40,6 +40,38 @@ describe Twilio::MainMenu do
       expect(UserQuestion.first.user_id).to eq user.id
     end
 
+  it 'will not ask the same question twice' do
+      user = User.create!(phone_number: '1234567890')
+      twilio_main_menu = Twilio::MainMenu.new
+      questions = Question.all
+      UserQuestion.create!(user_id: user.id, question_id: questions[0].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[1].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[2].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[3].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[4].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[5].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[6].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[7].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[8].id)
+      UserQuestion.create!(user_id: user.id, question_id: questions[9].id)
+      text = []
+      text << questions[0].question
+      text << questions[1].question
+      text << questions[2].question
+      text << questions[3].question
+      text << questions[4].question
+      text << questions[5].question
+      text << questions[6].question
+      text << questions[7].question
+      text << questions[8].question
+      text << questions[9].question
+
+      result = twilio_main_menu.return_xml(user)
+      doc = Nokogiri.XML(result)
+      text << doc.xpath('//Say').children.last.text
+      expect(text.uniq.length).to eq 11
+    end
+
   end
 
   describe "hangup" do
