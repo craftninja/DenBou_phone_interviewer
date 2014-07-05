@@ -140,6 +140,7 @@ h1 {
 }
 
 h6 {
+  margin: 1em;
   font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
 }
 
@@ -165,4 +166,28 @@ input[type=submit] {
   &:hover {
     color: black;
   }
+}
+
+#switch {
+  color: black;
+}
+
+#switch_back {
+  color: black;
+}
+#about_welcomebox {
+  color: black;
+  font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+  font-size: 2em;
+  width: 100%;
+  background-color: rgba(242, 232, 223, 0.75);
+  padding: 10px;
+  border: none;
+  text-align: center;
+}
+
+.link_like {}
+
+.no_top_bottom_margins {
+  margin: 0;
 }
