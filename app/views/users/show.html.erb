@@ -1,18 +1,14 @@
 <div class="fade">
   <nav>
   <span class="left">
-  <%= image_tag("PhoneInterviewMe.png", class: "logo") %>
+  <%= link_to(image_tag("PhoneInterviewMe.png", class: "logo"), root_path) %>
   </span>
   <span class="right"><h6>Please call <span class="orange">(646) 679-2429</span> to start answering interview questions!
   </h6>
   </span>
   </nav>
 
-  <% if flash %>
-    <span class="center"><p><%= flash[:phone_number_added] %></p></span>
-  <% end %>
-
-
+  <p class="center">Your current phone number is: <%= number_to_phone(current_user.phone_number, area_code: true) %>. Click here to update your phone number: <%= link_to "Update Phone Number", edit_user_path, class: "main_button" %></p>
   <% if !@recordings.empty? %>
     <span class="center"><h1>Recordings</h1></span>
 
