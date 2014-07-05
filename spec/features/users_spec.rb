@@ -21,13 +21,13 @@ feature 'user show page' do
     user = User.first
     user.update(phone_number: '9499499499')
     user2 = User.create!(
-        provider: "linkedin",
-        uid: "0SfZdFU0cj",
-        access_token: "AQUBRXSWHx2LBU0HjES_oaLEFKTU3dAYfcQmVAEDA0MGuMyQVJ...",
-        email: "user2@mock.com",
-        first_name: "User",
-        last_name: "2",
-        phone_number: "8555555555")
+      provider: "linkedin",
+      uid: "0SfZdFU0cj",
+      access_token: "AQUBRXSWHx2LBU0HjES_oaLEFKTU3dAYfcQmVAEDA0MGuMyQVJ...",
+      email: "user2@mock.com",
+      first_name: "User",
+      last_name: "2",
+      phone_number: "8555555555")
 
     visit "/users/#{user.id}"
     expect(page).to have_content("Please call (646) 679-2429 to start answering interview questions!")
@@ -51,5 +51,24 @@ feature 'user show page' do
     expect(page).to have_content 'Your current phone number is: (949) 949-9499. Click here to update your phone number:'
     click_link 'Update Phone Number'
     expect(page).to have_content 'Phone number'
+  end
+
+  scenario 'a users recordings should be ordered by date' do
+    mock_auth_hash
+    visit '/'
+    click_link 'Login with LinkedIn'
+    user = User.first
+    user.update(phone_number: '9499499499')
+    Recording.create!(user_id: user.id, question_id: 2, recording: "http://recording.com", created_at: "2014-07-06 17:00:17")
+    Recording.create!(user_id: user.id, question_id: 1, recording: "http://recording.com", created_at: "2014-07-05 16:00:17")
+    visit "/users/#{user.id}"
+    within first('.one_third') do
+      expect(page).to have_content 'July 6, 2014 at 5:00 PM'
+      expect(page).to have_content 'What is your biggest weakness?'
+    end
+    within page.all('.one_third').last do
+      expect(page).to have_content 'July 5, 2014 at 4:00 PM'
+      expect(page).to have_content 'What is your biggest strength?'
+    end
   end
 end
