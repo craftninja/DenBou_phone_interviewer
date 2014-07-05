@@ -33,6 +33,11 @@ feature 'user show page' do
     expect(page).to have_content("Please call (646) 679-2429 to start answering interview questions!")
 
     visit "/users/#{user2.id}"
-    expect(page).to have_content "Forbidden Fruit, my friend. Please visit your own profile page."
+    expect(page).to have_content "The page you were looking for doesn't exist."
+
+    visit "/users/#{user2.id}/edit"
+    expect(page).to have_content "The page you were looking for doesn't exist."
+
+
   end
 end
