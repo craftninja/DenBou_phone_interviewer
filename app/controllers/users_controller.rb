@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user.phone_number
-      @recordings = current_user.recordings.includes(:question)
+      @recordings = current_user.recordings.includes(:question).order(:created_at).reverse
     else
       redirect_to edit_user_path(current_user)
     end
