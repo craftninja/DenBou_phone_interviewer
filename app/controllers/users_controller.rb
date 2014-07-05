@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include ActionView::Helpers::NumberHelper
 
   before_action :user_cookie_expired?
-  before_action :validate_user, only: :show
+  before_action :validate_user, only: [:show, :edit]
 
 
   def show
@@ -44,6 +44,6 @@ end
   end
 
   def validate_user
-    render :status => :forbidden, :text => "Forbidden Fruit, my friend. Please visit your own profile page." unless current_user and current_user.id.to_s == params[:id]
+    render :file => "#{Rails.root}/public/404.html", :status => 404 unless current_user and current_user.id.to_s == params[:id]
   end
 end
