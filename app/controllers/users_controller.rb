@@ -21,8 +21,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(:phone_number => cleaned_params)
-      formatted_phone_number = number_to_phone(@user.phone_number, area_code: true)
-      flash[:phone_number_added] = "Thank you for adding your phone number. The phone number you added was: #{formatted_phone_number}."
       redirect_to user_path(@user)
     else
       render "edit"
@@ -36,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def cleaned_params
-    strong_params["phone_number"]["phone_number1"]+ strong_params["phone_number"]["phone_number2"].gsub("-","").delete(" ")
+    strong_params["phone_number"]["phone_number1"] + strong_params["phone_number"]["phone_number2"].gsub("-","").delete(" ")
 end
 
   def user_cookie_expired?

@@ -40,4 +40,16 @@ feature 'user show page' do
 
 
   end
+
+  scenario 'a user has an edit phone number button on their profile page' do
+    mock_auth_hash
+    visit '/'
+    click_link 'Login with LinkedIn'
+    user = User.first
+    user.update(phone_number: '9499499499')
+    visit "/users/#{user.id}"
+    expect(page).to have_content 'Your current phone number is: (949) 949-9499. Click here to update your phone number:'
+    click_link 'Update Phone Number'
+    expect(page).to have_content 'Phone number'
+  end
 end
