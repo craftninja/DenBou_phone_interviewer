@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   namespace :twilio do
     get '/main-menu', to: 'base#index'
     post '/main-menu', to: 'base#create'
-    post '/recordings',to: 'recordings#create'
+    post '/recordings', to: 'recordings#create'
   end
 
   resources :users, only: [:show, :edit, :update]
+
+  get 'users/:id/edit-phone', to: 'users#edit_phone', :as => 'edit_phone'
 end

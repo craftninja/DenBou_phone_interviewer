@@ -18,6 +18,9 @@ feature 'user show page' do
     expect(page).to_not have_link("#{question.question}")
     expect(page).to have_content('Login with LinkedIn')
 
+    click_link 'Login with LinkedIn'
+    expect(page).to have_link("#{question.question}")
+    expect(page).to_not have_content("Phone number")
   end
 
   scenario "logged in user cannot visit another user's profile page" do
@@ -27,13 +30,13 @@ feature 'user show page' do
     user = User.first
     user.update(phone_number: '9499499499')
     user2 = User.create!(
-      provider: "linkedin",
-      uid: "0SfZdFU0cj",
-      access_token: "AQUBRXSWHx2LBU0HjES_oaLEFKTU3dAYfcQmVAEDA0MGuMyQVJ...",
-      email: "user2@mock.com",
-      first_name: "User",
-      last_name: "2",
-      phone_number: "8555555555")
+        provider: "linkedin",
+        uid: "0SfZdFU0cj",
+        access_token: "AQUBRXSWHx2LBU0HjES_oaLEFKTU3dAYfcQmVAEDA0MGuMyQVJ...",
+        email: "user2@mock.com",
+        first_name: "User",
+        last_name: "2",
+        phone_number: "8555555555")
 
     visit "/users/#{user.id}"
     expect(page).to have_content("Please call (646) 679-2429 to start answering interview questions!")

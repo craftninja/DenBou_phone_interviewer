@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user.phone_number
+      redirect_to user_path(@user)
+    end
   end
 
   def update
@@ -27,6 +30,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_phone
+    @user = User.find(params[:id])
+  end
+
   private
 
   def strong_params
@@ -34,8 +41,8 @@ class UsersController < ApplicationController
   end
 
   def cleaned_params
-    strong_params["phone_number"]["phone_number1"] + strong_params["phone_number"]["phone_number2"].gsub("-","").delete(" ")
-end
+    strong_params["phone_number"]["phone_number1"] + strong_params["phone_number"]["phone_number2"].gsub("-", "").delete(" ")
+  end
 
   def user_cookie_expired?
     unless current_user
