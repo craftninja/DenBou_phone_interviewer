@@ -97,6 +97,10 @@ a:hover {
   color: red;
 }
 
+#notice {
+  color: red;
+}
+
 .recordings h1 {
   text-align: center;
   color: black;
@@ -121,6 +125,7 @@ a:hover {
   float: right;
   margin-right: 1em;
   margin-top: 0;
+  clear: both;
 }
 
 .center {
@@ -175,6 +180,7 @@ input[type=submit] {
 #switch_back {
   color: black;
 }
+
 #about_welcomebox {
   color: black;
   font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
@@ -186,7 +192,8 @@ input[type=submit] {
   text-align: center;
 }
 
-.link_like {}
+.link_like {
+}
 
 .no_top_bottom_margins {
   margin: 0;

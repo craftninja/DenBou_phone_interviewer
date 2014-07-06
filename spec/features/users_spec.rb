@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'user show page' do
 
-  scenario 'a user should see a list of their recordings on their profile page' do
+  scenario 'a user can see a list of their recordings on their profile page and log out' do
     mock_auth_hash
     visit '/'
     click_link 'Login with LinkedIn'
@@ -12,6 +12,12 @@ feature 'user show page' do
     Recording.create!(recording: 'http://www.recording.com', user_id: user.id, question_id: question.id)
     visit "/users/#{user.id}"
     expect(page).to have_link("#{question.question}")
+
+    click_link 'Log Out'
+    expect(page).to have_content('Logged out!')
+    expect(page).to_not have_link("#{question.question}")
+    expect(page).to have_content('Login with LinkedIn')
+
   end
 
   scenario "logged in user cannot visit another user's profile page" do

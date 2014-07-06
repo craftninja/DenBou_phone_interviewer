@@ -11,4 +11,8 @@ class LinkedinRegistrationController < ApplicationController
     redirect_to root_path, flash: {:auth_failure => "Authorization with LinkedIn has failed, please retry."}
   end
 
+  def destroy
+    cookies.delete(:user_id)
+    redirect_to root_path, flash: {:log_out => "Logged out!"}
+  end
 end
