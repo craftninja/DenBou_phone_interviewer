@@ -6,7 +6,7 @@
     <p class="center" id="notice"><%= flash[:logout] %></p>
     <a href="/auth/linkedin"><span id="bold_link">Login with </span><span id="linked_in">LinkedIn</span></a>
 
-    <p><span id="switch" class="link_like">About this project</span></p>
+    <p><span class="switch link_like">About this project</span></p>
   </div>
   <div id="about_welcomebox" hidden>
     <h1>About this Project</h1>
@@ -25,6 +25,12 @@
 
     <p class="no_top_bottom_margins">Emily Platzer</p>
 
-    <p><span id="switch_back" class="link_like">Back to Login</span></p>
+    <p><span class="switch link_like">Back to Login</span></p>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var welcome = new Welcome();
+    welcome.initialize();
+  });
+</script>
