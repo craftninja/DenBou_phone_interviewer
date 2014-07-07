@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/main-menu', to: 'base#index'
     post '/main-menu', to: 'base#create'
     post '/recordings', to: 'recordings#create'
+    post '/secondary-menu', to: 'base#secondary_menu'
   end
 
   resources :users, only: [:show, :edit, :update]

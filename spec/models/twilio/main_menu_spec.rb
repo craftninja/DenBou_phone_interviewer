@@ -23,7 +23,7 @@ describe Twilio::MainMenu do
       RECORDING
 
       twilio_main_menu = Twilio::MainMenu.new
-      result = twilio_main_menu.return_xml(user)
+      result = twilio_main_menu.ask_question(user)
       doc = Nokogiri.XML(result)
       expect(doc.xpath('//Say').children.count).to eq 2
       expect(doc.xpath('//Say').children.last.text).to match /[\w\W]{7,}/
@@ -35,7 +35,7 @@ describe Twilio::MainMenu do
       user = User.create!(phone_number: '1234567890')
       twilio_main_menu = Twilio::MainMenu.new
       expect(UserQuestion.count).to eq 0
-      twilio_main_menu.return_xml(user)
+      twilio_main_menu.ask_question(user)
       expect(UserQuestion.count).to eq 1
       expect(UserQuestion.first.user_id).to eq user.id
     end
@@ -66,7 +66,7 @@ describe Twilio::MainMenu do
       text << questions[8].question
       text << questions[9].question
 
-      result = twilio_main_menu.return_xml(user)
+      result = twilio_main_menu.ask_question(user)
       doc = Nokogiri.XML(result)
       text << doc.xpath('//Say').children.last.text
       expect(text.uniq.length).to eq 11
@@ -80,7 +80,7 @@ describe Twilio::MainMenu do
       output = <<-OUTPUT
 <?xml version="1.0"?>
 <Response>
-  <Say>Thanks for calling!</Say>
+  <Say>Thanks for calling! Any recordings will now be available on your profile page.</Say>
   <Hangup/>
 </Response>
       OUTPUT

@@ -9,7 +9,7 @@ module Twilio
       user = User.find_by(phone_number: phone_number)
       question_id = UserQuestion.last.question_id
       Recording.create!(recording: recording_url, user_id: user.id, question_id: question_id)
-      xml = Twilio::MainMenu.new.hang_up
+      xml = Twilio::MainMenu.new.secondary_menu
       render xml: xml
     end
 

@@ -1,6 +1,6 @@
 class Twilio::MainMenu
 
-  def return_xml(user)
+  def ask_question(user)
     asked_questions = UserQuestion.where(user_id: user.id)
     ids = asked_questions.map { |user_question| user_question.question_id }
     question = Question.limit(1).order("RANDOM()").first
@@ -19,10 +19,29 @@ class Twilio::MainMenu
     builder.to_xml
   end
 
+  def secondary_menu
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.Response {
+        xml.Gather(:action => "/twilio/secondary-menu") {
+          xml.Say "Please press 1 for another general question. Please press 2 to hang up."
+        }
+      }
+    end
+    builder
+  end
+
+  def secondary_menu_response(digit, user)
+    if digit.to_i == 1
+      ask_question(user)
+    elsif digit.to_i == 2
+      hang_up
+    end
+  end
+
   def hang_up
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.Response {
-        xml.Say "Thanks for calling!"
+        xml.Say "Thanks for calling! Any recordings will now be available on your profile page."
         xml.Hangup
       }
     end
