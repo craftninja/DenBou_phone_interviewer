@@ -7,7 +7,6 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth-linkedin-oauth2', '~> 0.1.5'
@@ -16,6 +15,7 @@ gem 'nokogiri', '~> 1.6.2.1'
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.2'
   gem 'dotenv-rails', '~> 0.11.1'
+  gem 'jasmine', '~> 2.0.2'
 end
 
 group :test do

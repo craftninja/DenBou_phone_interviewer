@@ -16,14 +16,14 @@
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
 
-html {
+body {
   background: url("http://openclipart.org/image/2400px/svg_to_png/183631/communication.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(242, 232, 223, 0.75);
 }
 
-html, body {
+body {
   height: 100%;
   width: 100%;
 }
@@ -193,6 +193,7 @@ input[type=submit] {
 }
 
 .link_like {
+  cursor: pointer;
 }
 
 .no_top_bottom_margins {

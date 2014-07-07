@@ -12,16 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
-$(document).ready(function () {
-  $('.link_like').css('cursor', 'pointer');
-  $("#switch").on("click", function () {
-    $("#welcomebox").toggle('slow');
-    $("#about_welcomebox").toggle('slow');
-  });
-  $("#switch_back").on("click", function () {
-    $("#welcomebox").toggle('slow');
-    $("#about_welcomebox").toggle('slow');
-  });
-});
+
+
