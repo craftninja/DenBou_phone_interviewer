@@ -16,6 +16,7 @@
 
 
       <h1 class="orange">Welcome, <%= current_user.first_name %>!</h1>
+      <div class="user_phone_num">
       <%= form_for @user do |f| %>
           <%= f.label :phone_number %>
           <%= f.fields_for :phone_number do |builder| %>
@@ -24,6 +25,8 @@
           <% end %>
           <%= f.submit "Add" %>
       <% end %>
+        </div>
+      <div class="explain_phone_num">Please enter the phone number from which you will be calling so we can attach the recording to your account.</div>
     </div>
   </div>
 </div>
