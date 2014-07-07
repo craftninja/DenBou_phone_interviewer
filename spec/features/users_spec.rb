@@ -13,7 +13,7 @@ feature 'user show page' do
     visit "/users/#{user.id}"
     expect(page).to have_link("#{question.question}")
 
-    click_link 'Log Out'
+    click_link 'Logout'
     expect(page).to have_content('Logged out!')
     expect(page).to_not have_link("#{question.question}")
     expect(page).to have_content('Login with LinkedIn')

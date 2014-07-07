@@ -13,6 +13,6 @@ class LinkedinRegistrationController < ApplicationController
 
   def destroy
     cookies.delete(:user_id)
-    redirect_to root_path, flash: {:log_out => "Logged out!"}
+    redirect_to root_path, flash: {:logout => "Logged out!"}
   end
 end

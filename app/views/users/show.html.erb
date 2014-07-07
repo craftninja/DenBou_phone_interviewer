@@ -6,7 +6,7 @@
   <span class="right"><h6>Please call <span class="orange">(646) 679-2429</span> to start answering interview questions!
   </h6>
   </span>
-    <span class="right" style="padding-right: 1em;">  <%= link_to "Log Out", log_out_path %>  </span>
+    <span class="right" style="padding-right: 1em;">  <%= link_to "Logout", logout_path %>  </span>
   </nav>
 
   <p class="center">Your current phone number is: <%= number_to_phone(current_user.phone_number, area_code: true) %>. Click here to update your phone number: <%= link_to "Update Phone Number", edit_phone_path, class: "main_button" %></p>

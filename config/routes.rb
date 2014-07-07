@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/auth/linkedin/callback', to: 'linkedin_registration#create'
   get '/auth/failure', to: 'linkedin_registration#failure'
-  get 'logout' => 'linkedin_registration#destroy', :as => 'log_out'
+  get 'logout' => 'linkedin_registration#destroy', :as => 'logout'
   namespace :twilio do
     get '/main-menu', to: 'base#index'
     post '/main-menu', to: 'base#create'
