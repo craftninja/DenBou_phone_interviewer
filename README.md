@@ -1,7 +1,7 @@
-DenBou_phone_interviewer
+Phone Interview Me
 ========================
 
-### get this puppy up and running
+### get this app up and running
 
 * fork, clone, bundle
 * $ rake db:create db:migrate db:seed
