@@ -1,7 +1,7 @@
-Phone Interview Me
+DenBou_phone_interviewer
 ========================
 
-### get this app up and running
+### get this puppy up and running
 
 * fork, clone, bundle
 * $ rake db:create db:migrate db:seed
@@ -11,3 +11,4 @@ Phone Interview Me
 
 ### link
 * Staging URL - [http://phone-interviewer-staging.herokuapp.com/](http://phone-interviewer-staging.herokuapp.com/)
+* Production URL - [http://phone-interview-me.herokuapp.com/](http://phone-interview-me.herokuapp.com/)
