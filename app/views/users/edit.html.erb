@@ -3,7 +3,6 @@
   <span class="left">
   <%= link_to(image_tag("PhoneInterviewMe.png", class: "logo"), root_path) %>
   </span>
-    <span class="right" style="padding-right: 1em; padding-top: 1em">  <%= link_to "Logout", logout_path %>  </span>
   </nav>
 
   <div id="wrapper">
@@ -16,6 +15,7 @@
 
 
       <h1 class="orange">Welcome, <%= current_user.first_name %>!</h1>
+      <div class="user_phone_num">
       <%= form_for @user do |f| %>
           <%= f.label :phone_number %>
           <%= f.fields_for :phone_number do |builder| %>
@@ -24,6 +24,8 @@
           <% end %>
           <%= f.submit "Add" %>
       <% end %>
+        </div>
+      <div class="explain_phone_num">Please enter the phone number from which you will be calling so we can attach the recording to your account.</div>
     </div>
   </div>
 </div>

@@ -72,11 +72,11 @@ feature 'user show page' do
     Recording.create!(user_id: user.id, question_id: 1, recording: "http://recording.com", created_at: "2014-07-05 16:00:17")
     visit "/users/#{user.id}"
     within first('.one_third') do
-      expect(page).to have_content 'July 6, 2014 at 5:00 PM'
+      expect(page).to have_content 'July 6, 2014'
       expect(page).to have_content 'What is your biggest weakness?'
     end
     within page.all('.one_third').last do
-      expect(page).to have_content 'July 5, 2014 at 4:00 PM'
+      expect(page).to have_content 'July 5, 2014'
       expect(page).to have_content 'What is your biggest strength?'
     end
   end
