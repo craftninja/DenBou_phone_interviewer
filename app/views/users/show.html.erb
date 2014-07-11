@@ -3,7 +3,7 @@
   <span class="left">
   <%= link_to(image_tag("PhoneInterviewMe.png", class: "logo"), root_path) %>
   </span>
-  <span class="right"><h6>Please call <span class="orange">(646) 679-2429</span> to start answering interview questions!
+  <span class="right"><h6>Please call <span class="orange"><%= ENV['TWILIO_PHONE_NUMBER'] %></span> to start answering interview questions!
   </h6>
   </span>
     <span class="right" style="padding-right: 1em;">  <%= link_to "Logout", logout_path %>  </span>
