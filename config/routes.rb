@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit, :update]
-
   get 'users/:id/edit-phone', to: 'users#edit_phone', :as => 'edit_phone'
+
+  resources :recordings, only:[:index]
 end

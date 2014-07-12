@@ -1,0 +1,20 @@
+<% if !@recordings.empty? %>
+    <span class="center"><h1>Recordings</h1></span>
+
+    <% @recordings.each do |recording| %>
+        <ul>
+          <div class="one_third">
+            <% if 24 - recording.created_at.strftime("%H").to_i == 0 %>
+                <li><%= recording.created_at.strftime("%B %e, %Y") %> -
+                  <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
+            <% elsif 24 - recording.created_at.strftime("%H").to_i > 12 %>
+                <li><%= recording.created_at.strftime("%B %e, %Y") %> -
+                  <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
+            <% else %>
+                <li><%= recording.created_at.strftime("%B %e, %Y") %> -
+                  <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
+            <% end %>
+          </div>
+        </ul>
+    <% end %>
+<% end %>
