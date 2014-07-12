@@ -10,6 +10,7 @@
   </nav>
 
   <p class="center">Your current phone number is: <%= number_to_phone(current_user.phone_number, area_code: true) %>. Click here to update your phone number: <%= link_to "Update Phone Number", edit_phone_path, class: "main_button" %></p>
+  <p class="center"> <%= link_to "Get Social! Listen to and comment on other users' answers!", recordings_path %></p>
   <% if !@recordings.empty? %>
     <span class="center"><h1>Recordings</h1></span>
 
@@ -30,5 +31,6 @@
       </ul>
     <% end %>
   <% end %>
+
 
 </div>
