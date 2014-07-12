@@ -1,4 +1,4 @@
-class Recording < ActiveRecord::Base
+  class Recording < ActiveRecord::Base
 
   belongs_to :question
   belongs_to :user
