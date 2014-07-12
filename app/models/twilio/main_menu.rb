@@ -4,7 +4,7 @@ class Twilio::MainMenu
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.Response {
         xml.Gather(:action => "/twilio/main-menu") {
-          xml.Say "Welcome to Phone Interviewer. Please press 1 for a general question."
+          xml.Say "Welcome to Phone Interview Me. Please press 1 for a general question."
         }
       }
     end

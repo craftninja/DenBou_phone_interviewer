@@ -10,7 +10,7 @@ describe 'interactions with twilio' do
 <?xml version="1.0"?>
 <Response>
   <Gather action="/twilio/main-menu">
-    <Say>Welcome to Phone Interviewer. Please press 1 for a general question.</Say>
+    <Say>Welcome to Phone Interview Me. Please press 1 for a general question.</Say>
   </Gather>
 </Response>
       INPUT
