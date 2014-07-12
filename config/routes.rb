@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/auth/failure', to: 'linkedin_registration#failure'
   get 'logout' => 'linkedin_registration#destroy', :as => 'logout'
   namespace :twilio do
-    get '/main-menu', to: 'base#index'
+    get '/main-menu', to: 'base#main_menu'
     post '/main-menu', to: 'base#create'
     post '/recordings', to: 'recordings#create'
     post '/secondary-menu', to: 'base#secondary_menu'

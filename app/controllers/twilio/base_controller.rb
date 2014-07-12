@@ -4,7 +4,8 @@ module Twilio
     skip_before_filter :verify_authenticity_token
 
     def main_menu
-
+      xml = Twilio::MainMenu.new.main_menu_response
+      render xml: xml
     end
 
     def create

@@ -1,5 +1,16 @@
 class Twilio::MainMenu
 
+  def main_menu_response
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.Response {
+        xml.Gather(:action => "/twilio/main-menu") {
+          xml.Say "Welcome to Phone Interviewer. Please press 1 for a general question."
+        }
+      }
+    end
+    builder.to_xml
+  end
+
   def ask_question(user)
     asked_questions = UserQuestion.where(user_id: user.id)
     ids = asked_questions.map { |user_question| user_question.question_id }
