@@ -14,6 +14,7 @@
  *= require_self
  */
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
 
 html {
@@ -84,7 +85,7 @@ a:hover {
   color: #E84F04;
 }
 
-#linked_in {
+.linked_in {
   font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
   font-size: .75em;
 }
@@ -135,7 +136,7 @@ a:hover {
 
 .one_third {
   margin-left: 33%;
-  font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
   font-size: .65em;
 }
 
@@ -146,22 +147,22 @@ h1 {
 
 h6 {
   margin: 1em;
-  font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
 }
 
 input[type=tel] {
-  font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
   font-size: .3em;
 }
 
 input[type=submit] {
-  font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
   font-size: .3em;
   background-color: #e66d09;
 }
 
 .main_button {
-  font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
   background-color: #e66d09;
   color: black;
   text-decoration: none;
@@ -195,6 +196,9 @@ input[type=submit] {
 .link_like {
   cursor: pointer;
   color: black;
+  background-color: rgba(242, 232, 223, 0.9);
+  padding: .2em .5em .1em .4em;
+  border: 2px #8B8680 solid;
 }
 
 .no_top_bottom_margins {
@@ -202,7 +206,7 @@ input[type=submit] {
 }
 
 .explain_phone_num {
-  font-family: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
   font-size: .35em;
   color: black;
   padding: 0 2em 0 1em
@@ -210,4 +214,15 @@ input[type=submit] {
 
 .user_phone_num {
   padding-bottom: .4em;
+}
+
+.login_link {
+  margin-bottom: 1.5em;
+}
+
+.awesome_people {
+  text-align: center;
+  font-size: 1.25em;
+  margin-bottom: 0em;
+  margin-top: .5em;
 }
