@@ -28,13 +28,13 @@ feature 'welcome page' do
     visit '/'
     click_link 'Login with LinkedIn'
     expect(page).to_not have_content 'Your Super-Secret PIN'
-    expect(page).to_not have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    expect(page).to_not have_content 'To start answering interview questions, call: (646) 679-2429'
     fill_in 'user[phone_number][phone_number1]', with: '234'
     fill_in 'user[phone_number][phone_number2]', with: '789-9874'
     click_button 'Add'
-    expect(page).to have_content 'Your current phone number is: (234) 789-9874. Click here to update your phone number:'
+    expect(page).to have_content 'Your current phone number is: (234) 789-9874'
     expect(page).to have_link 'Update Phone Number'
-    expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    expect(page).to have_content 'To start answering interview questions, call: (646) 679-2429'
   end
 
   scenario 'user is assigned a cookie that expires in 60 days after adding their phone number' do
@@ -42,12 +42,12 @@ feature 'welcome page' do
     visit '/'
     click_link 'Login with LinkedIn'
     expect(page).to_not have_content 'Your Super-Secret PIN'
-    expect(page).to_not have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    expect(page).to_not have_content 'To start answering interview questions, call: (646) 679-2429'
     fill_in 'user[phone_number][phone_number1]', with: '234'
     fill_in 'user[phone_number][phone_number2]', with: '789- 9874'
     click_button 'Add'
     visit '/'
-    expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    expect(page).to have_content 'To start answering interview questions, call: (646) 679-2429'
     travel_to(60.days.from_now) do
       user = User.first
       visit "/users/#{user.id}"
@@ -62,7 +62,7 @@ feature 'welcome page' do
     fill_in 'user[phone_number][phone_number1]', with: '234'
     fill_in 'user[phone_number][phone_number2]', with: '789 -9874'
     click_button 'Add'
-    expect(page).to have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    expect(page).to have_content 'To start answering interview questions, call: (646) 679-2429'
     expect(page).to_not have_content 'Recordings'
   end
 
@@ -72,7 +72,7 @@ feature 'welcome page' do
     click_link 'Login with LinkedIn'
     user = User.first
     visit "/users/#{user.id}"
-    expect(page).to_not have_content 'Please call (646) 679-2429 to start answering interview questions!'
+    expect(page).to_not have_content 'To start answering interview questions, call: (646) 679-2429'
     expect(page).to have_button 'Add'
   end
 

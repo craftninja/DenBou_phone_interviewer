@@ -39,7 +39,7 @@ feature 'user show page' do
         phone_number: "8555555555")
 
     visit "/users/#{user.id}"
-    expect(page).to have_content("Please call (646) 679-2429 to start answering interview questions!")
+    expect(page).to have_content("To start answering interview questions, call: (646) 679-2429")
 
     visit "/users/#{user2.id}"
     expect(page).to have_content "The page you were looking for doesn't exist."
@@ -57,7 +57,7 @@ feature 'user show page' do
     user = User.first
     user.update(phone_number: '9499499499')
     visit "/users/#{user.id}"
-    expect(page).to have_content 'Your current phone number is: (949) 949-9499. Click here to update your phone number:'
+    expect(page).to have_content 'Your current phone number is: (949) 949-9499'
     click_link 'Update Phone Number'
     expect(page).to have_content 'Phone number'
   end
