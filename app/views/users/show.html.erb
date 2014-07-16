@@ -3,13 +3,18 @@
   <span class="left">
   <%= link_to(image_tag("PhoneInterviewMe.png", class: "logo"), root_path) %>
   </span>
-  <span class="right"><h6>Please call <span class="orange"><%= ENV['TWILIO_PHONE_NUMBER'] %></span> to start answering interview questions!
-  </h6>
-  </span>
-    <span class="right" style="padding-right: 1em;">  <%= link_to "Logout", logout_path %>  </span>
+  <span class="logout">  <%= link_to "Logout", logout_path %>  </span>
   </nav>
+  <p class="personal_number">Your current phone number is:
+    <br><%= number_to_phone(current_user.phone_number, area_code: true) %>
+    <br><%= link_to "Update Phone Number", edit_phone_path, class: "main_button" %></p>
 
-  <p class="center">Your current phone number is: <%= number_to_phone(current_user.phone_number, area_code: true) %>. Click here to update your phone number: <%= link_to "Update Phone Number", edit_phone_path, class: "main_button" %></p>
+  <span class="center">
+    <h6 class="twilio_number">To start answering interview questions, call:<br>
+    <span class="orange"><%= ENV['TWILIO_PHONE_NUMBER'] %></span>
+    </h6>
+  </span>
+
   <p class="center"> <%= link_to "Get Social! Listen to and comment on other users' answers!", recordings_path %></p>
   <% if !@recordings.empty? %>
     <span class="center"><h1>Recordings</h1></span>

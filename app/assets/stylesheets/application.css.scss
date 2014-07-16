@@ -118,7 +118,7 @@ a:hover {
 
 .logo {
   width: 6em;
-  margin-left: 1em;
+  margin: .5em 0 .25em .5em;
   text-align: left;
 }
 
@@ -131,7 +131,8 @@ a:hover {
 
 .center {
   text-align: center;
-  font-size: 1em;
+  font-size: .75em;
+  font-family: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
 }
 
 .one_third {
@@ -168,7 +169,7 @@ input[type=submit] {
   text-decoration: none;
   padding: 2px 6px 3px;
   border: 2px outset buttonface;
-  font-size: .5em;
+  font-size: .8em;
   &:hover {
     color: black;
   }
@@ -225,4 +226,27 @@ input[type=submit] {
   font-size: 1.25em;
   margin-bottom: 0em;
   margin-top: .5em;
+}
+
+.logout {
+  float: right;
+  clear: both;
+  margin: 0.75em 0.75em 0 0 ;
+  padding: .3em .6em .1em .4em;
+  border: 2px #8B8680 solid;
+}
+.logout a {
+  text-decoration: none;
+}
+
+.twilio_number {
+  font-size: 1em;
+}
+
+.personal_number {
+  display: inline-block;
+  font-family: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
+  font-size: .6em;
+  margin-left: 1em;
+  text-align: center;
 }
