@@ -42,7 +42,7 @@ class Twilio::MainMenu
         }
       }
     end
-    builder
+    builder.to_xml
   end
 
   def secondary_menu_response(digit, user)
