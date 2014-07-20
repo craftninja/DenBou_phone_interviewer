@@ -117,5 +117,44 @@ describe 'interactions with twilio' do
       expect(response.body).to eq expected_xml
     end
 
+    it 'handles when a phone number is not in the system when posting to twilio/main-menu' do
+      post '/twilio/main-menu', {"AccountSid" => "ACb3bfd82c42042b28e7031bc91ff60f78", "ToZip" => "80401", "FromState" => "MA", "Called" => "+13039747558", "FromCountry" => "US", "CallerCountry" => "US", "CalledZip" => "80401", "Direction" => "inbound", "FromCity" => "NATICK", "CalledCountry" => "US", "CallerState" => "MA", "CallSid" => "CA509d86103aa5b29eacbfc42042a58fcd", "CalledState" => "CO", "From" => "+15083337320", "CallerZip" => "02482", "FromZip" => "02482", "CallStatus" => "ringing", "ToCity" => "DENVER", "ToState" => "CO", "To" => "+13039747558", "ToCountry" => "US", "CallerCity" => "NATICK", "ApiVersion" => "2010-04-01", "Caller" => "+15083337320", "CalledCity" => "DENVER"}
+      expected_response = <<-INPUT
+<?xml version="1.0"?>
+<Response>
+  <Say>The phone number that you are calling from is not associated with any account. Please call back with the number associated with your account.</Say>
+  <Hangup/>
+</Response>
+      INPUT
+      expect(response.code.to_i).to eq 200
+      expect(response.body).to eq(expected_response)
+    end
+
+    it 'handles when a phone number is not in the system when posting to twilio/secondary-menu' do
+      post '/twilio/secondary-menu', {"AccountSid" => "ACb3bfd82c42042b28e7031bc91ff60f78", "ToZip" => "80401", "FromState" => "MA", "Called" => "+13039747558", "FromCountry" => "US", "CallerCountry" => "US", "CalledZip" => "80401", "Direction" => "inbound", "FromCity" => "NATICK", "CalledCountry" => "US", "CallerState" => "MA", "CallSid" => "CA509d86103aa5b29eacbfc42042a58fcd", "CalledState" => "CO", "From" => "+15083337320", "CallerZip" => "02482", "FromZip" => "02482", "CallStatus" => "ringing", "ToCity" => "DENVER", "ToState" => "CO", "To" => "+13039747558", "ToCountry" => "US", "CallerCity" => "NATICK", "ApiVersion" => "2010-04-01", "Caller" => "+15083337320", "CalledCity" => "DENVER", "Digits" => "1"}
+      expected_response = <<-INPUT
+<?xml version="1.0"?>
+<Response>
+  <Say>The phone number that you are calling from is not associated with any account. Please call back with the number associated with your account.</Say>
+  <Hangup/>
+</Response>
+      INPUT
+      expect(response.code.to_i).to eq 200
+      expect(response.body).to eq(expected_response)
+    end
+
+    it 'handles when a phone number is not in the system when posting to twilio/recordings' do
+      post '/twilio/recordings', {"AccountSid" => "ACb3bfd82c42042b28e7031bc91ff60f78", "ToZip" => "80401", "FromState" => "MA", "Called" => "+13039747558", "FromCountry" => "US", "CallerCountry" => "US", "CalledZip" => "80401", "Direction" => "inbound", "FromCity" => "NATICK", "CalledCountry" => "US", "CallerState" => "MA", "CallSid" => "CA509d86103aa5b29eacbfc42042a58fcd", "CalledState" => "CO", "From" => "+15083337320", "CallerZip" => "02482", "FromZip" => "02482", "CallStatus" => "ringing", "ToCity" => "DENVER", "ToState" => "CO", "To" => "+13039747558", "ToCountry" => "US", "CallerCity" => "NATICK", "ApiVersion" => "2010-04-01", "Caller" => "+15083337320", "CalledCity" => "DENVER", "Digits" => "1"}
+      expected_response = <<-INPUT
+<?xml version="1.0"?>
+<Response>
+  <Say>The phone number that you are calling from is not associated with any account. Please call back with the number associated with your account.</Say>
+  <Hangup/>
+</Response>
+      INPUT
+      expect(response.code.to_i).to eq 200
+      expect(response.body).to eq(expected_response)
+    end
+
   end
 end
