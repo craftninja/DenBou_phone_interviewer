@@ -1,23 +1,36 @@
-<% if !@recordings.empty? %>
-  <span class="center"><h1>Recordings</h1></span>
+<div class="recordings_container">
 
-  <% @recordings.each do |recording| %>
-    <ul class="recordings">
-      <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-        <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a>
-      </li>
-      <div class="comment_container">
-        <% if !recording.comments.blank? %>
-          <div class="comment">
-            <%= render partial: "comment", collection: recording.comments %>
+  <% if !@recordings.empty? %>
+    <span class="center"><h1>Recordings</h1></span>
+
+    <% @recordings.each do |recording| %>
+      <ul class="recordings_well">
+        <li><h2><%= recording.question.question %></h2></li>
+        <li>
+          <audio controls>
+            <source src="<%= recording.recording %>" type="audio/x-wav">
+            Your browser does not support the audio
+            element. <%= link_to "Listen to the audio here", recording.recording, target: "_blank" %>
+          </audio>
+        </li>
+        <li>Answered by <%= recording.user.first_name %> on <%= recording.created_at.strftime("%B %e, %Y") %></li>
+
+        <div class="comment_container">
+          <% if !recording.comments.blank? %>
+            <h3>Comments</h3>
+            <div class="comments">
+              <%= render partial: "comment", collection: recording.comments %>
+            </div>
+          <% end %>
+          <div class="comments_form">
+            <%= form_for @comment do |f| %>
+              <%= f.hidden_field :recording_id, value: recording.id %>
+              <%= f.text_area :body %>
+              <%= f.submit "Add Comment" %>
+            <% end %>
           </div>
-        <% end %>
-        <%= form_for @comment do |f| %>
-          <%= f.hidden_field :recording_id, value: recording.id %>
-          <%= f.text_area :body %>
-          <%= f.submit "Add Comment" %>
-        <% end %>
-      </div>
-    </ul>
+        </div>
+      </ul>
+    <% end %>
   <% end %>
-<% end %>
+</div>

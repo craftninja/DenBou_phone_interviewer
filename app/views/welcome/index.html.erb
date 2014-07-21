@@ -1,31 +1,40 @@
-<div id="wrapper">
-  <div id="welcomebox">
-    <h1>Welcome to PhoneInterviewMe</h1>
+<div class="full-container" style="height: 100%; background: url('http://openclipart.org/image/2400px/svg_to_png/183631/communication.png'); background-size: cover; background-repeat: no-repeat; background-color: rgba(242, 232, 223, 0.75);">
 
-    <p class="center" id="errors"><%= flash[:auth_failure] %></p>
-    <p class="center" id="notice"><%= flash[:logout] %></p>
-    <div class="login_link"><a href="/auth/linkedin"><span id="bold_link">Login with </span><span class="linked_in">LinkedIn</span></a></div>
+  <div id="wrapper">
+    <div id="welcomebox">
+      <h1>Welcome to PhoneInterviewMe</h1>
 
-    <p><span class="switch link_like">About this project</span></p>
-  </div>
-  <div id="about_welcomebox" hidden>
-    <h1>About this Project</h1>
+      <p class="center" id="errors"><%= flash[:auth_failure] %></p>
 
-    <h6>Phone interviews are commonplace in the tech industry. Interviewees are screened for technical and interpersonal
-      skills before having to travel, which means they can be very important in landing an in-person interview. This app
-      can help the job seeker practice answering phone interview questions.</h6>
+      <p class="center" id="notice"><%= flash[:logout] %></p>
 
-    <p class="awesome_people">This app was created in collaboration with the following awesome people:</p>
+      <div class="login_link">
+        <a href="/auth/linkedin"><span id="bold_link">Login with </span><span class="linked_in">LinkedIn</span></a>
+      </div>
 
-    <a class="linked_in" href="https://www.linkedin.com/in/nathanaelburt">Nathanael Burt</a>
-    <br>
-    <a class="linked_in" href="https://www.linkedin.com/pub/kaylee-edmonson/93/30a/38a">Kaylee Edmonson</a>
-    <br>
-    <a class="linked_in" href="https://www.linkedin.com/in/sethmusulin">Seth Musulin</a>
-    <br>
-    <a class="linked_in" href="https://www.linkedin.com/in/emilyplatzer">Emily Platzer</a>
+      <p><span class="switch link_like">About this project</span></p>
+    </div>
+    <div id="about_welcomebox" hidden>
+      <h1>About this Project</h1>
 
-    <p><span class="switch link_like">Back to Login</span></p>
+      <h6>Phone interviews are commonplace in the tech industry. Interviewees are screened for technical and
+        interpersonal
+        skills before having to travel, which means they can be very important in landing an in-person interview. This
+        app
+        can help the job seeker practice answering phone interview questions.</h6>
+
+      <p class="awesome_people">This app was created in collaboration with the following awesome people:</p>
+
+      <a class="linked_in" href="https://www.linkedin.com/in/nathanaelburt">Nathanael Burt</a>
+      <br>
+      <a class="linked_in" href="https://www.linkedin.com/pub/kaylee-edmonson/93/30a/38a">Kaylee Edmonson</a>
+      <br>
+      <a class="linked_in" href="https://www.linkedin.com/in/sethmusulin">Seth Musulin</a>
+      <br>
+      <a class="linked_in" href="https://www.linkedin.com/in/emilyplatzer">Emily Platzer</a>
+
+      <p><span class="switch link_like">Back to Login</span></p>
+    </div>
   </div>
 </div>
 <script type="text/javascript">

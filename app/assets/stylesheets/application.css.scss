@@ -10,19 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
 
-html {
-  background: url("http://openclipart.org/image/2400px/svg_to_png/183631/communication.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: rgba(242, 232, 223, 0.75);
-}
+@import 'bourbon';
+@import "grid_settings";
+@import 'neat';
+@import "normalize";
+
+@import "social";
 
 html, body {
   height: 100%;
@@ -31,6 +30,12 @@ html, body {
 
 nav {
   background-color: rgba(242, 232, 223, 0.75);
+}
+
+#content_container {
+  overflow: hidden;
+  background-color: rgba(242, 232, 223, 0.90);
+  min-height: 100%;
 }
 
 .fade {
@@ -102,18 +107,20 @@ a:hover {
   color: red;
 }
 
-.recordings h1 {
-  text-align: center;
-  color: black;
-  font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
-  font-size: 2em;
-}
+.recordings {
+  h1 {
+    text-align: center;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 2em;
+  }
 
-.recordings li {
-  margin-left: 8em;
-  color: black;
-  font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
-  font-size: 1em;
+  li {
+    margin-left: 8em;
+    color: black;
+    font-family: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+    font-size: 1em;
+  }
 }
 
 .logo {
@@ -231,10 +238,11 @@ input[type=submit] {
 .logout {
   float: right;
   clear: both;
-  margin: 0.75em 0.75em 0 0 ;
+  margin: 0.75em 0.75em 0 0;
   padding: .3em .6em .1em .4em;
   border: 2px #8B8680 solid;
 }
+
 .logout a {
   text-decoration: none;
 }

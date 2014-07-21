@@ -22,7 +22,7 @@
     <% @recordings.each do |recording| %>
       <ul class="recordings_list">
         <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-          <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a>
+          <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %></a>
         </li>
       </ul>
     <% end %>

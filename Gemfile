@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth-linkedin-oauth2', '~> 0.1.5'
 gem 'nokogiri', '~> 1.6.2.1'
+gem 'bourbon', '~> 3.2.3'
+gem 'neat', '~> 1.5.1'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.2'
