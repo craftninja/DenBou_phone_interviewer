@@ -1,20 +1,23 @@
 <% if !@recordings.empty? %>
-    <span class="center"><h1>Recordings</h1></span>
+  <span class="center"><h1>Recordings</h1></span>
 
-    <% @recordings.each do |recording| %>
-        <ul>
-          <div class="one_third">
-            <% if 24 - recording.created_at.strftime("%H").to_i == 0 %>
-                <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-                  <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
-            <% elsif 24 - recording.created_at.strftime("%H").to_i > 12 %>
-                <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-                  <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
-            <% else %>
-                <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-                  <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
-            <% end %>
+  <% @recordings.each do |recording| %>
+    <ul class="recordings">
+      <li><%= recording.created_at.strftime("%B %e, %Y") %> -
+        <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a>
+      </li>
+      <div class="comment_container">
+        <% if !recording.comments.blank? %>
+          <div class="comment">
+            <%= render partial: "comments", collection: recording.comments %>
           </div>
-        </ul>
-    <% end %>
+        <% end %>
+        <%= form_for @comment do |f| %>
+          <%= f.hidden_field :recording_id, value: recording.id %>
+          <%= f.text_area :body %>
+          <%= f.submit "Add Comment" %>
+        <% end %>
+      </div>
+    </ul>
+  <% end %>
 <% end %>

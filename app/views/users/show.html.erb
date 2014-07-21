@@ -3,7 +3,7 @@
   <span class="left">
   <%= link_to(image_tag("PhoneInterviewMe.png", class: "logo"), root_path) %>
   </span>
-  <span class="logout">  <%= link_to "Logout", logout_path %>  </span>
+    <span class="logout">  <%= link_to "Logout", logout_path %>  </span>
   </nav>
   <p class="personal_number">Your current phone number is:
     <br><%= number_to_phone(current_user.phone_number, area_code: true) %>
@@ -11,7 +11,7 @@
 
   <span class="center">
     <h6 class="twilio_number">To start answering interview questions, call:<br>
-    <span class="orange"><%= ENV['TWILIO_PHONE_NUMBER'] %></span>
+      <span class="orange"><%= ENV['TWILIO_PHONE_NUMBER'] %></span>
     </h6>
   </span>
 
@@ -20,19 +20,10 @@
     <span class="center"><h1>Recordings</h1></span>
 
     <% @recordings.each do |recording| %>
-      <ul>
-        <div class="one_third">
-          <% if 24 - recording.created_at.strftime("%H").to_i == 0 %>
-            <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-              <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
-          <% elsif 24 - recording.created_at.strftime("%H").to_i > 12 %>
-            <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-              <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
-          <% else %>
-            <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-              <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a></li>
-          <% end %>
-        </div>
+      <ul class="recordings_list">
+        <li><%= recording.created_at.strftime("%B %e, %Y") %> -
+          <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %> </a>
+        </li>
       </ul>
     <% end %>
   <% end %>

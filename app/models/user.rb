@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :recordings
+  has_many :comments
 
   validates :phone_number, format: {with: /\A\d{10}\z/}, on: :update
 

@@ -3,6 +3,7 @@ class RecordingsController < ApplicationController
 
   def index
     @recordings = Recording.all
+    @comment = Comment.new
   end
 
   private
