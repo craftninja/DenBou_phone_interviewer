@@ -40,7 +40,7 @@ describe "Recording Comments" do
       fill_in "comment[body]", with: "This is a sweet answer"
       click_button "Add Comment"
     end
-    
+
     within first(".recordings") do
       expect(page).to have_content "This is a sweet answer"
       expect(page).to have_content "#{user.first_name}"

@@ -1,0 +1,5 @@
+<ul>
+  <li><%= comment.body %></li>
+  <li><%= comment.user.first_name %></li>
+  <li><%= time_ago_in_words(comment.created_at)%> ago</li>
+</ul>

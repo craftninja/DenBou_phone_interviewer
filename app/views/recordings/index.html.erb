@@ -9,7 +9,7 @@
       <div class="comment_container">
         <% if !recording.comments.blank? %>
           <div class="comment">
-            <%= render partial: "comments", collection: recording.comments %>
+            <%= render partial: "comment", collection: recording.comments %>
           </div>
         <% end %>
         <%= form_for @comment do |f| %>
