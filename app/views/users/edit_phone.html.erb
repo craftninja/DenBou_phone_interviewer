@@ -1,30 +1,9 @@
-<div class="fade">
-  <nav>
-  <span class="left">
-  <%= link_to(image_tag("PhoneInterviewMe.png", class: "logo"), root_path) %>
-  </span>
-    <span class="right" style="padding-right: 1em; padding-top: 1em">  <%= link_to "Logout", logout_path %>  </span>
-  </nav>
-
-  <div id="wrapper">
-    <div id="welcomebox">
-      <% if @user.errors.present? %>
-          <% @user.errors.full_messages.each do |message| %>
-              <p><span id="errors"><%= message %></span></p>
-          <% end %>
-      <% end %>
+<% if @user.errors.present? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
 
 
-      <h1 class="orange">Welcome, <%= current_user.first_name %>!</h1>
-      <%= form_for @user do |f| %>
-          <%= f.label :phone_number %>
-          <%= f.fields_for :phone_number do |builder| %>
-              <%= builder.phone_field :phone_number1, size: 4, :maxlength => 3 %>-
-              <%= builder.phone_field :phone_number2, size: 9, :maxlength => 7 %>
-          <% end %>
-          <%= f.submit "Update Phone" %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
+<h2 class="center">Welcome, <%= current_user.first_name %>!</h2>
+<%= render partial: "edit_form", locals: {submit_copy: "Update Number"} %>

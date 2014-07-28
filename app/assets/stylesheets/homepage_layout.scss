@@ -1,0 +1,33 @@
+#homepage_body {
+  background: $background image_url('faded_background_image.png') no-repeat;
+  @include media($large-screen) {
+    background: $background image_url('faded_background_image.png') no-repeat center center fixed;
+  }
+}
+
+#homepage_container {
+  margin-top: 15em;
+  background: $background;
+  padding: 1em;
+
+  a {
+    display: block;
+    margin-top: 1em;
+    &:first-child {
+      text-decoration: underline;
+      margin-bottom: 1em;
+    }
+  }
+
+  h1 {
+    margin-bottom: .5em;
+  }
+
+  h3 {
+    margin-top: 1em;
+  }
+
+  img {
+  }
+
+}

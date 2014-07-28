@@ -1,0 +1,39 @@
+header {
+  overflow: hidden;
+  background: $dark_background;
+  padding: .5em 1em;
+  img {
+    width: 7em;
+  }
+
+  nav {
+    @include outer-container;
+    #site_logo {
+      clear: both;
+      @include media($large-screen) {
+        float: left;
+      }
+    }
+  }
+
+  ul {
+    margin-top: 1em;
+    @include media($large-screen) {
+      float: right;
+      margin-top: 2.5em;
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  li {
+    display: block;
+    margin: .5em 0;
+    @include media($large-screen) {
+      display: inline-block;
+      margin: 0 .5em 0 0;
+    }
+  }
+}

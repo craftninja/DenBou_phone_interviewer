@@ -12,26 +12,11 @@ class Twilio::MainMenu
   end
 
   def ask_question(user)
-    begin
-      asked_questions = UserQuestion.where(user_id: user.id)
-      ids = asked_questions.map { |user_question| user_question.question_id }
-      question = Question.limit(1).order("RANDOM()").first
-      while ids.include?(question.id)
-        question = Question.limit(1).order("RANDOM()").first
-      end
-      UserQuestion.create!(:user_id => user.id, :question_id => question.id)
-      builder = Nokogiri::XML::Builder.new do |xml|
-        xml.Response {
-          xml.Say "Press any key when you have completed responding to the following question."
-          xml.Pause
-          xml.Say question.question
-          xml.Record(:maxLength => 60, :action => "/twilio/recordings")
-        }
-      end
-      builder.to_xml
-    rescue NoMethodError
-      phone_number_is_nil
-    end
+    asked_questions = UserQuestion.where(user_id: user.id)
+    ids = asked_questions.map { |user_question| user_question.question_id }
+    question = pick_question(ids)
+    UserQuestion.create!(:user_id => user.id, :question_id => question.id)
+    build_question(question)
   end
 
   def secondary_menu
@@ -63,7 +48,7 @@ class Twilio::MainMenu
     builder.to_xml
   end
 
-  def phone_number_is_nil
+  def phone_number_is_invalid
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.Response {
         xml.Say "The phone number that you are calling from is not associated with any account. Please call back with the number associated with your account."
@@ -71,6 +56,28 @@ class Twilio::MainMenu
       }
     end
     builder.to_xml
+  end
+
+  private
+
+  def build_question(question)
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.Response {
+        xml.Say "Press any key when you have completed responding to the following question."
+        xml.Pause
+        xml.Say question.question
+        xml.Record(:maxLength => 60, :action => "/twilio/recordings")
+      }
+    end
+    builder.to_xml
+  end
+
+  def pick_question(ids)
+    question = Question.limit(1).order("RANDOM()").first
+    while ids.include?(question.id)
+      question = Question.limit(1).order("RANDOM()").first
+    end
+    question
   end
 
 end

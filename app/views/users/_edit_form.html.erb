@@ -1,0 +1,7 @@
+<%= form_for @user, html: {class: "edit_form center"} do |f| %>
+  <%= f.fields_for :phone_number do |builder| %>
+    <%= builder.phone_field :phone_number1, :maxlength => 3 %> -
+    <%= builder.phone_field :phone_number2, :maxlength => 7 %>
+  <% end %>
+  <%= f.submit submit_copy, class: "main_cta edit_button" %>
+<% end %>

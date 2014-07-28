@@ -41,7 +41,7 @@ describe "Recording Comments" do
       click_button "Add Comment"
     end
 
-    within first(".recordings_well") do
+    within first(".user_recording") do
       expect(page).to have_content "This is a sweet answer"
       expect(page).to have_content "#{user.first_name}"
     end

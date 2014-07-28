@@ -1,0 +1,88 @@
+#main_body {
+  background: $background;
+}
+
+.main_container {
+  @include outer-container;
+  min-height: 500px;
+  overflow: hidden;
+  h2 {
+    margin: .75em 0 .5em;
+  }
+
+  @include media($large-screen) {
+    p {
+      margin: .75em 0;
+    }
+  }
+}
+
+.flash {
+  font-family: $main_font;
+}
+
+.center {
+  text-align: center;
+}
+
+#profile_information {
+  padding-left: .5em;
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  h3 {
+    margin-bottom: .25em;
+  }
+
+  @include media($large-screen) {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+#user_recordings_container,
+#all_user_recordings_container {
+  h3 {
+    margin-top: 1em;
+    padding-left: .5em;
+    @include media($large-screen) {
+      padding: 0;
+    }
+  }
+  margin: 1em 0 2em;
+  .user_recording {
+    margin-top: 1em;
+    overflow: hidden;
+    background: $dark_background;
+    padding: .75em;
+    h4 {
+      margin: 0 0 .5em;
+    }
+  }
+  audio {
+    margin-bottom: 0;
+  }
+}
+
+#all_user_recordings_container {
+  .comment_container {
+    margin-top: .5em;
+  }
+
+  .comment_header {
+    margin: .5em 0;
+    padding: 0;
+    text-decoration: underline;
+  }
+}
+
+.comments {
+  ul {
+    margin: .5em 0;
+    li {
+      line-height: 1.25em;
+    }
+  }
+}

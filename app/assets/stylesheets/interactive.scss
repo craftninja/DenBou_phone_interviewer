@@ -1,0 +1,61 @@
+input {
+  border-radius: 3px;
+  @include media($large-screen) {
+    font-size: 1em;
+  }
+}
+
+input[type=tel] {
+  height: 2.25em;
+  border: none;
+  margin: 1em 0;
+}
+
+.main_cta {
+  margin: 0;
+  border-radius: 3px;
+  text-decoration: none;
+  background: $light_orange;
+  border: 1px solid $light_orange;
+  color: white;
+  padding: .25em;
+  transition: background-color 500ms ease,
+              border 500ms ease;
+  &:hover {
+    cursor: pointer;
+    background: $main_orange;
+    border: 1px solid $main_orange;
+  }
+
+  @include media($large-screen) {
+    font-size: 1em;
+  }
+}
+
+.edit_button {
+  margin-left: .5em;
+  height: 2.25em;
+}
+
+audio {
+  margin: .5em 0;
+}
+
+textarea {
+  display: block;
+  height: 5em;
+  width: 27.5em;
+  border: none;
+  border-radius: 3px;
+  margin: .5em 0;
+}
+
+.main_link {
+  font-family: $link_font;
+  text-decoration: none;
+  color: $main_orange;
+  &:hover {
+    color: $hover_orange;
+  }
+}
+

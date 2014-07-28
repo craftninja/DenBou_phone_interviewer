@@ -1,0 +1,49 @@
+$header_cursive: 'Great Vibes', 'Helvetica', Helvetica, sans-serif;
+$link_font: 'Oswald', 'Helvetica', Helvetica, sans-serif;
+$main_font: 'Roboto Condensed', 'Helvetica', Helvetica, sans-serif;
+
+h1 {
+  font-family: $header_cursive;
+  font-size: 2em;
+  @include media($large-screen) {
+    font-size: 4em;
+  }
+}
+
+h2 {
+  font-family: $header_cursive;
+  font-size: 1.5em;
+  @include media($large-screen) {
+    font-size: 2.75em;
+  }
+}
+
+h3 {
+  font-size: 1.25em;
+  font-family: $main_font;
+  text-decoration: underline;
+  @include media($large-screen) {
+    font-size: 1.75em;
+  }
+}
+
+h4 {
+  font-size: 1em;
+  @include media($large-screen) {
+    font-size: 1.25em;
+  }
+}
+
+p {
+  font-family: $main_font;
+  line-height: 1.25em;
+  font-size: .8em;
+  @include media($large-screen) {
+    font-size: 1em;
+  }
+}
+
+li {
+  font-family: $main_font;
+  font-size: .8em;
+}
