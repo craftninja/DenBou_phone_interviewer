@@ -1,36 +1,38 @@
 <div class="recordings_container">
 
-  <% if !@recordings.empty? %>
-    <span class="center"><h1>Recordings</h1></span>
+  <% if @recordings.any? %>
+    <div id="all_user_recordings_container">
+      <h2 class="center">Most Recent Recordings</h2>
 
-    <% @recordings.each do |recording| %>
-      <ul class="recordings_well">
-        <li><h2><%= recording.question.question %></h2></li>
-        <li>
-          <audio controls>
-            <source src="<%= recording.recording %>" type="audio/x-wav">
-            Your browser does not support the audio
-            element. <%= link_to "Listen to the audio here", recording.recording, target: "_blank" %>
-          </audio>
-        </li>
-        <li>Answered by <%= recording.user.first_name %> on <%= recording.created_at.strftime("%B %e, %Y") %></li>
+      <% @recordings.each do |recording| %>
+        <div class="user_recording">
+          <ul>
+            <h4><%= recording.question.question %></h4>
+            <li>Answered by <%= recording.user.first_name %> on <%= recording.created_at.strftime("%B %e, %Y") %></li>
+            <li>
+              <audio controls>
+                <source src="<%= recording.recording %>" type="audio/x-wav">
+                Your browser does not support the audio
+                element. <%= link_to "Listen to the audio here", recording.recording, target: "_blank" %>
+              </audio>
+            </li>
+            <div class="comment_container">
+              <% if recording.comments.any? %>
+                <h4 class="comment_header">Comments</h4>
 
-        <div class="comment_container">
-          <% if !recording.comments.blank? %>
-            <h3>Comments</h3>
-            <div class="comments">
-              <%= render partial: "comment", collection: recording.comments %>
+                <div class="comments">
+                  <%= render partial: "comment", collection: recording.comments %>
+                </div>
+              <% end %>
+              <%= form_for @comment do |f| %>
+                <%= f.hidden_field :recording_id, value: recording.id %>
+                <%= f.text_area :body, placeholder: "Share your thoughts!" %>
+                <%= f.submit "Add Comment", class: "main_cta" %>
+              <% end %>
             </div>
-          <% end %>
-          <div class="comments_form">
-            <%= form_for @comment do |f| %>
-              <%= f.hidden_field :recording_id, value: recording.id %>
-              <%= f.text_area :body %>
-              <%= f.submit "Add Comment" %>
-            <% end %>
-          </div>
+          </ul>
         </div>
-      </ul>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>

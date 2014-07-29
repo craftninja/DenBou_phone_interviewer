@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PhoneInterviewMe</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="homepage_body">
+<div class="main_container">
+  <%= yield %>
+</div>
+</body>
+</html>

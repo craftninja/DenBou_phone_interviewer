@@ -14,18 +14,18 @@ var welcome;
       jQuery.fx.off = false;
     });
 
-    it("hides #welcomebox and shows #about_welcomebox when a user clicks on .link_like", function () {
-      var fixture = '<div id="welcomebox"><p><span class="switch link_like">About this project</span></p></div><div id="about_welcomebox" hidden><p><span class="switch link_like">Back to Login</span></p></div>'
+    it("hides #welcomebox and shows #about_welcomebox when a user clicks on .js_welcome_toggle", function () {
+      var fixture = '<div id="welcome_container" class="center"><a class="js_welcome_toggle main_link" href="#">About this project</a></div><div id="about_welcome_container" class="center" hidden><a class="js_welcome_toggle main_link" href="#">Back to Login</a></div>'
       $('#jasmine_content').append(fixture);
       welcome = new Welcome();
       welcome.toggleWelcomeBoxes();
-      $('.link_like:first').click();
-      expect($('#welcomebox')).toBeHidden();
-      expect($('#about_welcomebox')).not.toBeHidden();
+      $('.js_welcome_toggle:first').click();
+      expect($('#welcome_container')).toBeHidden();
+      expect($('#about_welcome_container')).not.toBeHidden();
 
-      $('.link_like:last').click();
-      expect($('#welcomebox')).not.toBeHidden();
-      expect($('#about_welcomebox')).toBeHidden();
+      $('.js_welcome_toggle:last').click();
+      expect($('#welcome_container')).not.toBeHidden();
+      expect($('#about_welcome_container')).toBeHidden();
     });
 
   });

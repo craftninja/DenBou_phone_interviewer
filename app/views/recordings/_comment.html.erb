@@ -1,4 +1,4 @@
 <ul>
-  <li><span class="orange"><%= comment.user.first_name %></span> wrote <%= time_ago_in_words(comment.created_at)%> ago</li>
+  <li><%= comment.user.first_name %> wrote <%= time_ago_in_words(comment.created_at)%> ago</li>
   <li><%= comment.body %></li>
 </ul>

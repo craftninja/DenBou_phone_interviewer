@@ -11,15 +11,15 @@ feature 'user show page' do
     question = Question.all[8]
     Recording.create!(recording: 'http://www.recording.com', user_id: user.id, question_id: question.id)
     visit "/users/#{user.id}"
-    expect(page).to have_link("#{question.question}")
+    expect(page).to have_content("#{question.question}")
 
     click_link 'Logout'
     expect(page).to have_content('Logged out!')
-    expect(page).to_not have_link("#{question.question}")
+    expect(page).to_not have_content("#{question.question}")
     expect(page).to have_content('Login with LinkedIn')
 
     click_link 'Login with LinkedIn'
-    expect(page).to have_link("#{question.question}")
+    expect(page).to have_content("#{question.question}")
     expect(page).to_not have_content("Phone number")
   end
 
@@ -39,7 +39,7 @@ feature 'user show page' do
         phone_number: "8555555555")
 
     visit "/users/#{user.id}"
-    expect(page).to have_content("To start answering interview questions, call: (646) 679-2429")
+    expect(page).to have_content("Answer questions now: (646) 679-2429")
 
     visit "/users/#{user2.id}"
     expect(page).to have_content "The page you were looking for doesn't exist."
@@ -57,9 +57,9 @@ feature 'user show page' do
     user = User.first
     user.update(phone_number: '9499499499')
     visit "/users/#{user.id}"
-    expect(page).to have_content 'Your current phone number is: (949) 949-9499'
+    expect(page).to have_content 'Current phone number: (949) 949-9499'
     click_link 'Update Phone Number'
-    expect(page).to have_content 'Phone number'
+    expect(page).to have_button 'Update Number'
   end
 
   scenario 'a users recordings should be ordered by date' do
@@ -72,11 +72,11 @@ feature 'user show page' do
     Recording.create!(user_id: user.id, question_id: questions[0].id, recording: "http://recording.com", created_at: "2014-07-06 17:00:17")
     Recording.create!(user_id: user.id, question_id: questions[1].id, recording: "http://recording.com", created_at: "2014-07-05 16:00:17")
     visit "/users/#{user.id}"
-    within first('.recordings_list') do
+    within first('.user_recording') do
       expect(page).to have_content 'July 6, 2014'
       expect(page).to have_content 'What is your biggest strength?'
     end
-    within page.all('.recordings_list').last do
+    within page.all('.user_recording').last do
       expect(page).to have_content 'July 5, 2014'
       expect(page).to have_content 'What is your biggest weakness?'
     end

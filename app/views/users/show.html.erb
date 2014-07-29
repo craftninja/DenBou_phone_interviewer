@@ -1,32 +1,31 @@
-<div class="fade">
-  <nav>
-  <span class="left">
-  <%= link_to(image_tag("PhoneInterviewMe.png", class: "logo"), root_path) %>
-  </span>
-    <span class="logout">  <%= link_to "Logout", logout_path %>  </span>
-  </nav>
-  <p class="personal_number">Your current phone number is:
-    <br><%= number_to_phone(current_user.phone_number, area_code: true) %>
-    <br><%= link_to "Update Phone Number", edit_phone_path, class: "main_button" %></p>
+<h2 class="center">My Profile</h2>
 
-  <span class="center">
-    <h6 class="twilio_number">To start answering interview questions, call:<br>
-      <span class="orange"><%= ENV['TWILIO_PHONE_NUMBER'] %></span>
-    </h6>
-  </span>
+<div id="profile_information">
+  <h3>Profile Information</h3>
 
-  <p class="center"> <%= link_to "Get Social! Listen to and comment on other users' answers!", recordings_path %></p>
-  <% if !@recordings.empty? %>
-    <span class="center"><h1>Recordings</h1></span>
+  <p>Current phone number: <%= number_to_phone(current_user.phone_number, area_code: true) %></p>
+
+  <%= link_to "Update Phone Number", edit_phone_path, class: "main_cta" %>
+</div>
+
+<% if @recordings.any? %>
+  <div id="user_recordings_container">
+    <h3>My Recordings</h3>
 
     <% @recordings.each do |recording| %>
-      <ul class="recordings_list">
-        <li><%= recording.created_at.strftime("%B %e, %Y") %> -
-          <a href="<%= recording.recording %>" target="_blank"><%= recording.question.question %></a>
-        </li>
-      </ul>
+      <div class="user_recording">
+        <ul>
+          <h4><%= recording.question.question %></h4>
+          <li>Answered on <%= recording.created_at.strftime("%B %e, %Y") %></li>
+          <li>
+            <audio controls>
+              <source src="<%= recording.recording %>" type="audio/x-wav">
+              Your browser does not support the audio
+              element. <%= link_to "Listen to the audio here", recording.recording, target: "_blank" %>
+            </audio>
+          </li>
+        </ul>
+      </div>
     <% end %>
-  <% end %>
-
-
-</div>
+  </div>
+<% end %>

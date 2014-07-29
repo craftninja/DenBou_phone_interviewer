@@ -11,7 +11,11 @@ module Twilio
     def create
       phone_number = params[:Caller].slice(2..-1)
       user = User.find_by(phone_number: phone_number)
-      xml = Twilio::MainMenu.new.ask_question(user)
+      if user.nil?
+        xml = Twilio::MainMenu.new.phone_number_is_invalid
+      else
+        xml = Twilio::MainMenu.new.ask_question(user)
+      end
       render xml: xml
     end
 
@@ -19,7 +23,11 @@ module Twilio
       digit = params[:Digits]
       phone_number = params[:Caller].slice(2..-1)
       user = User.find_by(phone_number: phone_number)
-      xml = Twilio::MainMenu.new.secondary_menu_response(digit, user)
+      if user.nil?
+        xml = Twilio::MainMenu.new.phone_number_is_invalid
+      else
+        xml = Twilio::MainMenu.new.secondary_menu_response(digit, user)
+      end
       render xml: xml
     end
 
