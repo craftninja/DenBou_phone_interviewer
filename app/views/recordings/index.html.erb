@@ -16,19 +16,26 @@
                 element. <%= link_to "Listen to the audio here", recording.recording, target: "_blank" %>
               </audio>
             </li>
-            <div class="comment_container">
-              <% if recording.comments.any? %>
-                <h4 class="comment_header">Comments</h4>
+            <div class="comment_container" ng-controller="CommentsController">
+              <h4 class="comment_header">Comments</h4>
 
-                <div class="comments">
-                  <%= render partial: "comment", collection: recording.comments %>
-                </div>
-              <% end %>
-              <%= form_for @comment do |f| %>
-                <%= f.hidden_field :recording_id, value: recording.id %>
-                <%= f.text_area :body, placeholder: "Share your thoughts!" %>
-                <%= f.submit "Add Comment", class: "main_cta" %>
-              <% end %>
+              <div class="comments">
+                <ul ng-repeat="comment in comments | orderBy:filter_by:reverse">
+                  <li>{{comment.user_first_name}} wrote {{comment.created_at | fromNow}}</li>
+                  <li>{{comment.body}}</li>
+                </ul>
+                <% if recording.comments.any? %>
+                  <%= render partial: "comment", collection: recording.comments.reverse %>
+                <% end %>
+              </div>
+              <a class="main_link" ng-click="toggleForm()">{{form.message}}</a>
+
+              <div class="comments-form-container" ng-show="showForm">
+                <form ng-submit="addComment(<%= recording.id %>)">
+                  <textarea name="comment[body]" ng-model="comment.body" placeholder="Share your thoughts!"></textarea>
+                  <input type="submit" value="Add Comment" class="main_cta">
+                </form>
+              </div>
             </div>
           </ul>
         </div>

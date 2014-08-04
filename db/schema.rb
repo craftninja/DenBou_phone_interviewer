@@ -63,4 +63,12 @@ ActiveRecord::Schema.define(version: 20140720232750) do
     t.string "phone_number"
   end
 
+  create_table "users_questions", force: true do |t|
+    t.integer "user_id"
+    t.integer "question_id"
+  end
+
+  add_index "users_questions", ["question_id"], name: "index_users_questions_on_question_id", using: :btree
+  add_index "users_questions", ["user_id"], name: "index_users_questions_on_user_id", using: :btree
+
 end
