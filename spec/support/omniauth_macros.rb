@@ -8,7 +8,8 @@ module OmniauthMacros
       'info' => {
         'first_name' => 'Nathanael',
         'last_name' => 'mock',
-        'email' => 'mock@email.com'
+        'email' => 'mock@email.com',
+        'image' => 'http://cdn.cutestpaw.com/wp-content/uploads/2014/02/l-Angora-Bunny-with-a-haircut.jpg'
       },
       'credentials' => {
         'token' => 'mock_token',

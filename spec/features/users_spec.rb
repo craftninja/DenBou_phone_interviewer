@@ -81,4 +81,16 @@ feature 'user show page' do
       expect(page).to have_content 'What is your biggest weakness?'
     end
   end
+
+  scenario 'User has profile pic and email on their profile page' do
+    mock_auth_hash
+    visit '/'
+    click_link 'Login with LinkedIn'
+    user = User.first
+    user.update(phone_number: '9499499499')
+    visit "/users/#{user.id}"
+    expect(page).to have_content('mock@email.com')
+    expect(page).to have_xpath("//img[@src = 'http://cdn.cutestpaw.com/wp-content/uploads/2014/02/l-Angora-Bunny-with-a-haircut.jpg']")
+  end
+
 end
