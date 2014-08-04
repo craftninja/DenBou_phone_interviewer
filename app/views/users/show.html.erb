@@ -2,11 +2,15 @@
 
 <div id="profile_information">
   <h3>Profile Information</h3>
+  <div class="profile_info">
 
+  <%= image_tag current_user.image_url %>
+  <p><%= current_user.email %></p>
   <p>Current phone number: <%= number_to_phone(current_user.phone_number, area_code: true) %></p>
 
   <%= link_to "Update Phone Number", edit_phone_path, class: "main_cta" %>
 </div>
+  </div>
 
 <% if @recordings.any? %>
   <div id="user_recordings_container">
