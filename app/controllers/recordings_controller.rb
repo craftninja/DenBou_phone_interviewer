@@ -2,7 +2,7 @@ class RecordingsController < ApplicationController
   before_action :validate_registration
 
   def index
-    @recordings = Recording.all
+    @recordings = Recording.all.open_to_public
     @comment = Comment.new
   end
 

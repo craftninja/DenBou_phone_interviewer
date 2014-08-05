@@ -9,23 +9,36 @@
 </div>
 
 <% if @recordings.any? %>
-  <div id="user_recordings_container">
-    <h3>My Recordings</h3>
+    <div id="user_recordings_container">
+      <h3>My Recordings</h3>
 
-    <% @recordings.each do |recording| %>
-      <div class="user_recording">
-        <ul>
-          <h4><%= recording.question.question %></h4>
-          <li>Answered on <%= recording.created_at.strftime("%B %e, %Y") %></li>
-          <li>
-            <audio controls>
-              <source src="<%= recording.recording %>" type="audio/x-wav">
-              Your browser does not support the audio
-              element. <%= link_to "Listen to the audio here", recording.recording, target: "_blank" %>
-            </audio>
-          </li>
-        </ul>
-      </div>
-    <% end %>
-  </div>
+      <% @recordings.each do |recording| %>
+          <div class="user_recording">
+            <ul>
+              <h4><%= recording.question.question %></h4>
+              <li>Answered on <%= recording.created_at.strftime("%B %e, %Y") %></li>
+              <li>
+                <audio controls>
+                  <source src="<%= recording.recording %>" type="audio/x-wav">
+                  Your browser does not support the audio element.
+                  <%= link_to "Listen to the audio here", recording.recording, target: "_blank" %>
+                </audio>
+                <label for="check-box">
+                <input class="check-box" name="check-box" data-recording-id="<%= recording.id %>" type="checkbox"
+                       <% if recording.public %>checked
+                       <% end %>>
+                  Make recording Public
+                </label>
+              </li>
+            </ul>
+          </div>
+      <% end %>
+    </div>
 <% end %>
+
+<script>
+    $(document).ready(function () {
+        var userShow = new UserShow();
+        userShow.initialize();
+    });
+</script>

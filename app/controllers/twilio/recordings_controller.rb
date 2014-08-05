@@ -17,5 +17,13 @@ module Twilio
       render xml: xml
     end
 
+    def update
+      @recording = Recording.find(params[:recording_id])
+      if params[:value] == "0"
+        @recording.update_attributes(public: false)
+      else
+        @recording.update_attributes(public: true)
+      end
+    end
   end
 end

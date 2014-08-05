@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/main-menu', to: 'base#main_menu'
     post '/main-menu', to: 'base#create'
     post '/recordings', to: 'recordings#create'
+    patch '/recordings', to: 'recordings#update'
     post '/secondary-menu', to: 'base#secondary_menu'
   end
 

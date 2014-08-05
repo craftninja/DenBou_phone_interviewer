@@ -23,6 +23,23 @@ feature 'user show page' do
     expect(page).to_not have_content("Phone number")
   end
 
+  scenario "the recordings on the user's page are automatically checked as public" do
+    mock_auth_hash
+    visit '/'
+    click_link 'Login with LinkedIn'
+    user = User.first
+    user.update(phone_number: '9499499499')
+    question = Question.all[8]
+    Recording.create!(recording: 'http://www.recording.com', user_id: user.id, question_id: question.id)
+    visit "/users/#{user.id}"
+    expect(page).to have_content("#{question.question}")
+    my_box = find('.check-box')
+    expect(my_box).to be_checked
+    uncheck('check-box')
+    expect(my_box).to_not be_checked
+  end
+
+
   scenario "logged in user cannot visit another user's profile page" do
     mock_auth_hash
     visit '/'
