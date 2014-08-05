@@ -4,7 +4,12 @@ class CommentsController < ApplicationController
     @comment = Comment.new(strong_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to recordings_path
+      comment = {
+        body: @comment.body,
+        user_first_name: @comment.user.first_name,
+        created_at: @comment.created_at
+      }
+      render json: comment.to_json
     else
       render 'recordings/index'
     end

@@ -10,6 +10,7 @@ describe Twilio::MainMenu do
 
     it 'will return a random question when a user has pressed 1' do
       user = User.create!(phone_number: '1234567890')
+      create_question
       output = <<-OUTPUT
 <?xml version="1.0"?>
 <Response>
@@ -33,6 +34,8 @@ describe Twilio::MainMenu do
 
     it 'will add the question to the users list of answered question' do
       user = User.create!(phone_number: '1234567890')
+      create_question
+      create_question('What is your biggest weakness?')
       twilio_main_menu = Twilio::MainMenu.new
       expect(UserQuestion.count).to eq 0
       twilio_main_menu.ask_question(user)
@@ -43,33 +46,27 @@ describe Twilio::MainMenu do
   it 'will not ask the same question twice' do
       user = User.create!(phone_number: '1234567890')
       twilio_main_menu = Twilio::MainMenu.new
-      questions = Question.all
-      UserQuestion.create!(user_id: user.id, question_id: questions[0].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[1].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[2].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[3].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[4].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[5].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[6].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[7].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[8].id)
-      UserQuestion.create!(user_id: user.id, question_id: questions[9].id)
+      question1 = create_question
+      question2 = create_question('What is your biggest weakness?')
+      question3 = create_question('Why do you want this job?')
+      question4 = create_question('Why are you leaving your present job?')
+      question5 = create_question('When were you most satisfied in your job?')
+      UserQuestion.create!(user_id: user.id, question_id: question1.id)
+      UserQuestion.create!(user_id: user.id, question_id: question2.id)
+      UserQuestion.create!(user_id: user.id, question_id: question3.id)
+      UserQuestion.create!(user_id: user.id, question_id: question4.id)
+      UserQuestion.create!(user_id: user.id, question_id: question5.id)
       text = []
-      text << questions[0].question
-      text << questions[1].question
-      text << questions[2].question
-      text << questions[3].question
-      text << questions[4].question
-      text << questions[5].question
-      text << questions[6].question
-      text << questions[7].question
-      text << questions[8].question
-      text << questions[9].question
+      text << question1.question
+      text << question2.question
+      text << question3.question
+      text << question4.question
+      text << question5.question
 
       result = twilio_main_menu.ask_question(user)
       doc = Nokogiri.XML(result)
       text << doc.xpath('//Say').children.last.text
-      expect(text.uniq.length).to eq 11
+      expect(text.uniq.length).to eq 5
     end
 
   end

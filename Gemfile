@@ -13,6 +13,7 @@ gem 'omniauth-linkedin-oauth2', '~> 0.1.5'
 gem 'nokogiri', '~> 1.6.2.1'
 gem 'bourbon', '~> 3.2.3'
 gem 'neat', '~> 1.5.1'
+gem 'angularjs-rails', '~> 1.2.20'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.2'
@@ -22,8 +23,9 @@ end
 
 group :test do
   gem 'capybara', '~> 2.2.1'
-  gem 'webmock', '~> 1.18.0'
   gem 'launchy', '~> 2.4.2'
+  gem 'selenium-webdriver', '~> 2.42.0'
+  gem 'database_cleaner', '~> 1.3.0'
 end
 
 group :production do

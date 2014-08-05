@@ -8,7 +8,7 @@ feature 'user show page' do
     click_link 'Login with LinkedIn'
     user = User.first
     user.update(phone_number: '9499499499')
-    question = Question.all[8]
+    question = create_question
     Recording.create!(recording: 'http://www.recording.com', user_id: user.id, question_id: question.id)
     visit "/users/#{user.id}"
     expect(page).to have_content("#{question.question}")
@@ -63,8 +63,6 @@ feature 'user show page' do
 
     visit "/users/#{user2.id}/edit"
     expect(page).to have_content "The page you were looking for doesn't exist."
-
-
   end
 
   scenario 'a user has an edit phone number button on their profile page' do
@@ -85,9 +83,10 @@ feature 'user show page' do
     click_link 'Login with LinkedIn'
     user = User.first
     user.update(phone_number: '9499499499')
-    questions = Question.all
-    Recording.create!(user_id: user.id, question_id: questions[0].id, recording: "http://recording.com", created_at: "2014-07-06 17:00:17")
-    Recording.create!(user_id: user.id, question_id: questions[1].id, recording: "http://recording.com", created_at: "2014-07-05 16:00:17")
+    question1 = create_question
+    question2 = create_question('What is your biggest weakness?')
+    Recording.create!(user_id: user.id, question_id: question1.id, recording: "http://recording.com", created_at: "2014-07-06 17:00:17")
+    Recording.create!(user_id: user.id, question_id: question2.id, recording: "http://recording.com", created_at: "2014-07-05 16:00:17")
     visit "/users/#{user.id}"
     within first('.user_recording') do
       expect(page).to have_content 'July 6, 2014'
@@ -98,4 +97,16 @@ feature 'user show page' do
       expect(page).to have_content 'What is your biggest weakness?'
     end
   end
+
+  scenario 'User has profile pic and email on their profile page' do
+    mock_auth_hash
+    visit '/'
+    click_link 'Login with LinkedIn'
+    user = User.first
+    user.update(phone_number: '9499499499')
+    visit "/users/#{user.id}"
+    expect(page).to have_content('mock@email.com')
+    expect(page).to have_xpath("//img[@src = 'http://cdn.cutestpaw.com/wp-content/uploads/2014/02/l-Angora-Bunny-with-a-haircut.jpg']")
+  end
+
 end
