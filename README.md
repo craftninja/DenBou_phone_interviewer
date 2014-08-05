@@ -1,7 +1,7 @@
 DenBou_phone_interviewer
 ========================
 
-An application built for job seekers to practice answering interview questions over the phone.  The app utlizes the Twilio API to record answers and allows users to publish recordings for comment by other users. 
+An application built for job seekers to practice answering interview questions over the phone.  The app utilizes the Twilio API to record answers and allows users to publish recordings for comment by other users. 
 
 Tech: Ruby on Rails, PostgreSQL, JavaScript, Angular, RSepc, Capybara 
 
