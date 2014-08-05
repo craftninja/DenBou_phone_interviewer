@@ -29,7 +29,7 @@ feature 'user show page' do
     click_link 'Login with LinkedIn'
     user = User.first
     user.update(phone_number: '9499499499')
-    question = Question.all[8]
+    question = create_question
     Recording.create!(recording: 'http://www.recording.com', user_id: user.id, question_id: question.id)
     visit "/users/#{user.id}"
     expect(page).to have_content("#{question.question}")
