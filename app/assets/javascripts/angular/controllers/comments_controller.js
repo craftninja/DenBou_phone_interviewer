@@ -7,7 +7,7 @@
     };
   });
 
-  app.controller("CommentsController", function ($scope, $http) {
+  app.controller("CommentsController", ['$scope', '$http', function ($scope, $http) {
     $scope.form = {message: 'Add Comment'};
     $scope.showForm = false;
     $scope.comments = [];
@@ -47,5 +47,5 @@
       $scope.comment = {}
     };
 
-  });
+  }]);
 })();
