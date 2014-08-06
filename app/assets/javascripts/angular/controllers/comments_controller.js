@@ -27,16 +27,15 @@
     };
 
     $scope.addComment = function (recording_id) {
-      var csrfToken = $('meta[name=csrf-token]').attr('content');
       var csrfParam = $('meta[name=csrf-param]').attr('content');
-
+      var csrfToken = $('meta[name=csrf-token]').attr('content');
       var post_data = {
-        csrfToken: csrfParam,
         comment: {
           recording_id: recording_id,
           body: $scope.comment.body
         }
       };
+      post_data[csrfParam] = csrfToken;
       $http.post("/comments", post_data).success(function (data) {
         $scope.comments.push(data);
         $scope.resetComment();
