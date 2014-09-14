@@ -11,7 +11,7 @@ Tech: Ruby on Rails, PostgreSQL, JavaScript, Angular, RSepc, Capybara
 * $ rake db:create db:migrate db:seed
 * set up Twilio account
 * create app on LinkedIn
-* add LinkedIn API key and API secret key to .env file (see .env.example)
+* add LinkedIn API key and API secret key to .env file (see [.env.example](https://github.com/craftninja/DenBou_phone_interviewer/blob/master/.env.example))
 
 ### link
 * Staging URL - [http://phone-interviewer-staging.herokuapp.com/](http://phone-interviewer-staging.herokuapp.com/)
